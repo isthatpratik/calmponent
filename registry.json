@@ -2,5 +2,19 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "calmponent",
   "homepage": "https://github.com/isthatpratik/calmponent",
-  "items": []
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "The cn() helper. Joins class names and resolves Tailwind CSS conflicts.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
 }

@@ -25,13 +25,15 @@ Read the full purpose and principles in [`docs/purpose.md`](docs/purpose.md).
 
 The full list, with the open decisions, is in the [decision backlog](docs/decisions/README.md).
 
-## Planned install
+## Install
+
+There are no components yet. The first registry item is the `cn()` helper:
 
 ```bash
-npx shadcn@latest add @calmponent/button
+npx shadcn@latest add isthatpratik/calmponent/utils
 ```
 
-This is a plan, not a working command yet.
+The shorter `@calmponent/...` form comes when the docs site is hosted. See [ADR 0004](docs/decisions/0004-distribution.md).
 
 ## Contributing
 

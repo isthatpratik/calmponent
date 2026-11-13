@@ -19,10 +19,12 @@
     "typecheck": "turbo run typecheck",
     "lint": "biome lint .",
     "format": "biome format --write .",
-    "check": "biome check ."
+    "check": "biome check .",
+    "registry:build": "shadcn build ./registry.json --output ./apps/www/public/r"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",
+    "shadcn": "^4.23.0",
     "turbo": "2.11.10"
   }
 }
