@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/isthatpratik/calmponent/discussions/new?category=q-a
+    about: If something does not work as you expect, ask in Discussions first.
+  - name: Report a security problem
+    url: https://github.com/isthatpratik/calmponent/security/advisories/new
+    about: Report security problems privately. Do not open a public issue.

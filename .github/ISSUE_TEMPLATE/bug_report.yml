@@ -1,0 +1,58 @@
+name: Bug report
+description: Something does not work as described.
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for the report. Search the existing issues first, so that we do not get duplicates.
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component has the problem?
+      placeholder: button
+    validations:
+      required: true
+  - type: dropdown
+    id: state
+    attributes:
+      label: State
+      description: In which state does the problem occur?
+      multiple: true
+      options:
+        - idle
+        - loading
+        - success
+        - error
+        - empty
+        - disabled
+        - not related to a state
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Give a link to a minimal reproduction (for example CodeSandbox or StackBlitz), or numbered steps.
+      placeholder: |
+        1. Install the component.
+        2. Click the button.
+        3. See the error.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Framework and version, browser, operating system, and whether reduced motion is on.
+      placeholder: Next.js 16, Chrome 142, macOS, reduced motion off
+  - type: checkboxes
+    id: ai
+    attributes:
+      label: AI tools
+      options:
+        - label: An AI agent (for example Claude Code, Cursor, or v0) generated the code that uses the component.
