@@ -4,3 +4,8 @@ packages:
 # Skip package versions that are less than 2 days old (2880 minutes).
 # This protects against compromised releases. See ADR 0007.
 minimumReleaseAge: 2880
+
+# Only these packages may run install scripts. esbuild checks its native
+# binary after install. It is used by fumadocs-mdx.
+allowBuilds:
+  esbuild: true

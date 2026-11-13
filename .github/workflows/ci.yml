@@ -8,6 +8,9 @@ on:
 permissions:
   contents: read
 
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
@@ -36,6 +39,9 @@ jobs:
 
       - name: Lint and format
         run: pnpm check
+
+      - name: Typecheck
+        run: pnpm typecheck
 
       - name: Build
         run: pnpm build
