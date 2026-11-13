@@ -1,6 +1,6 @@
 # 0004: Distribution
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-13
 - Backlog item: D3
 
@@ -28,7 +28,7 @@ Users copy Calmponent components into their projects with the shadcn CLI. We mus
 - Good: normal `npm install` and semver.
 - Bad: it breaks the copy-paste model. None of the libraries we checked ship their components this way.
 
-## Decision (proposed, not final)
+## Decision
 
 Use **A and B together**. Do not publish an npm package for v1.
 

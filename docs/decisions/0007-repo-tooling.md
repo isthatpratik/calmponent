@@ -1,6 +1,6 @@
 # 0007: Repository layout and tools
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-13
 - Backlog item: D11
 
@@ -17,7 +17,7 @@ We need a repository layout and a tool set before the first line of code. The us
 | Lint and format | ESLint + Prettier | ESLint + Prettier | Biome | ESLint + Prettier |
 | Tests | Vitest | none found | bun test | none |
 
-## Decision (proposed, not final)
+## Decision
 
 1. **pnpm workspace** (pnpm 12, pinned with the `packageManager` field). It saves disk space, which matters for the user.
 2. **Turborepo** for task caching across the workspace.
@@ -42,6 +42,8 @@ We need a repository layout and a tool set before the first line of code. The us
 
 - `CONTRIBUTING.md` gets a real setup section after this ADR is accepted.
 - Dependabot can be added once `package.json` exists.
+- Biome does not format Markdown. Its Markdown formatter pads every table cell, which makes diffs of the docs hard to read.
+- The supply-chain guard blocks versions younger than 2 days. On 2026-11-14 it blocked Biome 2.6.7 and Turborepo 2.11.11, so we pinned 2.6.6 and 2.11.10. This is expected. Dependabot proposes the newer versions later.
 
 ## Sources
 

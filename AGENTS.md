@@ -6,7 +6,7 @@ This file gives the rules for AI coding agents that work in this repository.
 
 Calmponent is a shadcn/ui-compatible component library. Every component has every state, every motion has a reason, and people and AI agents can use it correctly. Read [`docs/purpose.md`](docs/purpose.md) before you start.
 
-Current phase: **planning**. There is no code yet. The open decisions are in [`docs/decisions/README.md`](docs/decisions/README.md). Do not write code that depends on an open decision.
+Current phase: **planning**. The workspace exists (pnpm, Turborepo, Biome), but there are no components yet. The open decisions are in [`docs/decisions/README.md`](docs/decisions/README.md). Do not write code that depends on an open decision.
 
 ## How to work
 
@@ -28,6 +28,7 @@ Current phase: **planning**. There is no code yet. The open decisions are in [`d
 - Commit only as the account that owns the repository. The repository-local identity is `Pratik Desai <94686836+isthatpratik@users.noreply.github.com>`. Do not use the work identity (`pratik-desai18`) here. Do not change the global git config.
 - Commits, PRs, issues, and docs must read as the user's own work. Do not add `Co-Authored-By` lines, "Generated with" lines, or any AI attribution.
 - Do not commit, push, create a GitHub repository, tag, or publish unless the user asks.
+- `main` is protected. Work on a branch and open a pull request. Direct pushes to `main` fail.
 - Use Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`).
 
 ## Writing
