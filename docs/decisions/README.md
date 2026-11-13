@@ -1,0 +1,35 @@
+# Decisions
+
+We make each important decision before we write code. Each decision gets an ADR (architecture decision record) in this folder. Copy [`0000-template.md`](0000-template.md) to start one.
+
+Rules:
+
+- A "proposed" value below is only a starting point. It is not a decision until its ADR status is "accepted" and the user agrees.
+- Verify facts with real sources (docs, GitHub, npm data, community posts) before an ADR is accepted. Record the sources in the ADR.
+- Do not start code that depends on a decision that is still open.
+
+## Backlog
+
+| # | Decision | Questions to answer | Proposed starting point | Status |
+|---|---|---|---|---|
+| D1 | License | MIT or MIT-0? What must users keep when they copy code? | Accepted: MIT. See [0002](0002-license.md). | accepted |
+| D2 | Primitive base | Radix UI, Base UI, or React Aria? Maintenance, accessibility, shadcn CLI support, migration cost for shadcn users. | Accepted: Base UI only for v1. See [0001](0001-primitive-base.md). | accepted |
+| D3 | Distribution | shadcn registry only, or also an npm package? Namespace, registry hosting, support for npm, pnpm, bun, and yarn. | Proposed in [0004](0004-distribution.md). | proposed |
+| D4 | Frameworks | Which frameworks do we support and test? Next.js App Router, Vite, React Router, Astro, TanStack Start. Server Components? | Proposed in [0005](0005-frameworks.md). | proposed |
+| D5 | Releases and versions | Semver for the registry? Git tags, changelog, how users find updates, breaking-change policy. | Proposed in [0006](0006-releases.md). | proposed |
+| D6 | Design system | Colors, themes (light and dark), type, spacing, radius, shadows, motion tokens. How users theme it. | Decide with the design skills and the saved design taste (monochrome, polar.sh, primora.xyz). | open |
+| D7 | Site structure | Landing page, showcase, blocks, docs, theme tuner, states matrix. Navigation and URLs. | Decide with the `landing-page-design` and `stageshow` skills. | open |
+| D8 | Docs stack | Fumadocs, Nextra, or custom on Next.js. Search, MDX, live previews, "Copy for AI". | Research first. | open |
+| D9 | Quality gates | Accessibility tests, visual regression, bundle size limits, reduced motion checks, browser matrix, CI. | All four gates in CI before v1. | open |
+| D10 | AI readiness | `llms.txt`, Claude Code skill, prop JSON schemas, shadcn MCP support, published agent test results. | All of them, with a test that measures agent output. | open |
+| D11 | Repo and workflow rules | Monorepo layout, package manager, commit style, branches, approvals. | Proposed in [0007](0007-repo-tooling.md). | proposed |
+| D12 | v1 scope | Which 20 to 25 components and which blocks ship first? | Draft after D2 and D6. | open |
+| D13 | Code reuse | What do we copy from shadcn/ui or other projects? What notice must we keep? | Accepted: write from scratch, reference only. See [0003](0003-code-reuse.md). | accepted |
+| D14 | Hosting and domain | Where does the site run? Which domain? | Free Vercel subdomain first. A domain costs money, so the user decides. | open |
+
+## Accepted
+
+- [Purpose and principles](../purpose.md) (2026-11-12)
+- [0001: Primitive base](0001-primitive-base.md), D2 (2026-11-12)
+- [0002: License](0002-license.md), D1 (2026-11-12)
+- [0003: Code reuse](0003-code-reuse.md), D13 (2026-11-13)
