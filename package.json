@@ -22,7 +22,7 @@
     "check": "biome check ."
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.7",
-    "turbo": "2.11.11"
+    "@biomejs/biome": "2.6.6",
+    "turbo": "2.11.10"
   }
 }
