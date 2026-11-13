@@ -8,6 +8,9 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+        exclude-patterns: ["fumadocs*"]
+      fumadocs:
+        patterns: ["fumadocs*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

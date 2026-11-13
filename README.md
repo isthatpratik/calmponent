@@ -20,6 +20,7 @@ Read the full purpose and principles in [`docs/purpose.md`](docs/purpose.md).
 | Distribution | shadcn registry under `@calmponent`, no npm package. See [ADR 0004](docs/decisions/0004-distribution.md). |
 | Frameworks | Tested on Next.js and Vite. Requires React 19 and Tailwind CSS 4. See [ADR 0005](docs/decisions/0005-frameworks.md). |
 | Releases | Semver, git tags, and a changelog. See [ADR 0006](docs/decisions/0006-releases.md). |
+| Docs | Fumadocs (headless) on Next.js. See [ADR 0008](docs/decisions/0008-docs-stack.md). |
 | Tools | pnpm workspace, Turborepo, Biome, Vitest, Node.js 24. See [ADR 0007](docs/decisions/0007-repo-tooling.md). |
 
 The full list, with the open decisions, is in the [decision backlog](docs/decisions/README.md).
