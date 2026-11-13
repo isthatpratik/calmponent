@@ -1,6 +1,6 @@
 # 0006: Releases and versions
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-13
 - Backlog item: D5
 
@@ -15,7 +15,7 @@ Users copy files, so they do not get updates automatically. We must decide how u
 - shadcn uses Changesets for its npm packages only.
 - Magic UI, coss, and Motion Primitives have no GitHub releases and no git tags.
 
-## Decision (proposed, not final)
+## Decision
 
 1. **Semver for the whole library.** One version number, for example `v0.3.0`. Before v1, minor versions may break.
 2. **Git tag and GitHub release** for each version. The tag makes the GitHub registry pin work.

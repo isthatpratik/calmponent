@@ -1,6 +1,6 @@
 # 0007: Repository layout and tools
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-13
 - Backlog item: D11
 
@@ -17,7 +17,7 @@ We need a repository layout and a tool set before the first line of code. The us
 | Lint and format | ESLint + Prettier | ESLint + Prettier | Biome | ESLint + Prettier |
 | Tests | Vitest | none found | bun test | none |
 
-## Decision (proposed, not final)
+## Decision
 
 1. **pnpm workspace** (pnpm 12, pinned with the `packageManager` field). It saves disk space, which matters for the user.
 2. **Turborepo** for task caching across the workspace.

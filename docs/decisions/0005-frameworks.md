@@ -1,6 +1,6 @@
 # 0005: Frameworks
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-13
 - Backlog item: D4
 
@@ -14,7 +14,7 @@ Calmponent components are React and Tailwind CSS files. The shadcn CLI installs 
 - `@base-ui/react` 1.9.0 marks its files with `'use client'`. It accepts React 17, 18, and 19. Its `date-fns` peers are optional.
 - The shadcn docs app uses Next.js 16, React 19, and Tailwind CSS 4.
 
-## Decision (proposed, not final)
+## Decision
 
 1. **Tested:** Next.js (App Router) and Vite. Each release runs the test suite in both.
 2. **Supported, not tested:** every other framework that the shadcn CLI supports. The docs say this clearly.
