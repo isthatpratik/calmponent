@@ -43,5 +43,17 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Test
+        run: pnpm test
+
+      - name: Validate registry
+        run: pnpm exec shadcn registry validate ./registry.json
+
+      # The built JSON in apps/www/public/r is committed. Fail if it is stale.
+      - name: Check registry build is up to date
+        run: |
+          pnpm registry:build
+          git diff --exit-code -- apps/www/public/r
+
       - name: Build
         run: pnpm build

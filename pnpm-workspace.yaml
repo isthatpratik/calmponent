@@ -1,5 +1,6 @@
 packages:
   - "apps/*"
+  - "registry"
 
 # Skip package versions that are less than 2 days old (2880 minutes).
 # This protects against compromised releases. See ADR 0007.
