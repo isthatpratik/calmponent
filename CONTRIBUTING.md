@@ -32,7 +32,36 @@ We record each important decision as an ADR (architecture decision record) in [`
 
 ## Development setup
 
-There is no development setup yet. The repository layout and the tools are open decision D11. This section will describe the setup when D11 is accepted.
+You need Node.js 24 (see `.nvmrc`) and Corepack, which comes with Node.js.
+
+1. Enable Corepack, so that the pinned pnpm version is used:
+
+   ```bash
+   corepack enable
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Check formatting and lint:
+
+   ```bash
+   pnpm check
+   ```
+
+The layout is described in [ADR 0007](docs/decisions/0007-repo-tooling.md). There are no apps or components yet.
+
+## Branches
+
+`main` is protected. Nobody can push to it directly:
+
+1. Create a branch from `main`, for example `feat/button-loading-state`.
+2. Push the branch and open a pull request.
+3. Resolve all review comments.
+4. Squash-merge the pull request.
 
 ## Code of conduct
 
