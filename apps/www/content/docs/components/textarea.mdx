@@ -1,0 +1,35 @@
+---
+title: Textarea
+description: A textarea that grows with its content, with a character count that warns near the limit.
+---
+
+import { TextareaDemo, TextareaStates } from "@/components/demos/textarea"
+
+<TextareaDemo />
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/textarea" />
+
+## Usage
+
+```tsx
+<Textarea maxLength={280} placeholder="What changed?" />
+```
+
+Set `maxLength` to show a counter. It turns amber at 90% of the limit and red at the limit. Use it inside `Field` for a label and errors.
+
+## States
+
+<TextareaStates />
+
+## Props
+
+Every native textarea attribute, plus:
+
+- `warnAt`: the share of `maxLength` where the counter turns amber. Defaults to `0.9`.
+
+## Accessibility
+
+- The visible counter is hidden from screen readers, because reading it on every key is noise. Instead, a live region announces 50, 20, and 10 characters left, and when the limit is reached.
+- The textarea grows with its content in browsers that support `field-sizing`. In other browsers, it can be resized by hand.
