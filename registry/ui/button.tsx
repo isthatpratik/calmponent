@@ -8,26 +8,23 @@ import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
   [
-    "relative inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg outline-none",
-    "transition-[color,background-color,border-color,opacity,transform] duration-200 ease-calm",
+    "group/button relative isolate inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-lg outline-none",
+    "transition-[color,opacity,scale] duration-200 ease-calm",
     "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     "active:scale-98 motion-reduce:active:scale-100",
     "data-disabled:pointer-events-none data-disabled:opacity-50",
     // A loading button looks active, not disabled, while it waits.
-    "data-[status=loading]:cursor-progress data-[status=loading]:opacity-100",
+    "data-[status=loading]:pointer-events-auto data-[status=loading]:cursor-progress data-[status=loading]:opacity-100",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   ],
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        outline:
-          "border border-border bg-background hover:bg-accent hover:text-accent-foreground",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20",
+        default: "text-primary-foreground",
+        secondary: "text-secondary-foreground",
+        outline: "hover:text-accent-foreground",
+        ghost: "hover:text-accent-foreground",
+        destructive: "text-destructive",
         link: "text-foreground underline-offset-4 hover:underline",
       },
       size: {
@@ -48,6 +45,36 @@ const buttonVariants = cva(
   },
 )
 
+/**
+ * The fill sits on its own layer behind the label. On hover it draws in
+ * slightly (scale 0.97) while the label stays still and sharp.
+ */
+const fillVariants = cva(
+  [
+    "pointer-events-none absolute inset-0 -z-10 rounded-[inherit]",
+    "transition-[scale,opacity,background-color] duration-300 ease-calm",
+    "group-hover/button:scale-97 motion-reduce:transition-[opacity,background-color] motion-reduce:group-hover/button:scale-100",
+    // No hover response while the button waits for its result.
+    "group-data-[status=loading]/button:scale-100",
+  ],
+  {
+    variants: {
+      variant: {
+        default: "bg-primary group-hover/button:bg-primary/90",
+        secondary: "bg-secondary group-hover/button:bg-secondary/80",
+        outline:
+          "border border-border bg-background group-hover/button:bg-accent",
+        ghost: "scale-97 bg-accent opacity-0 group-hover/button:opacity-100",
+        destructive: "bg-destructive/10 group-hover/button:bg-destructive/20",
+        link: "hidden",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+)
+
 type ButtonStatus = "idle" | "loading" | "success" | "error"
 
 type ButtonProps = ButtonPrimitive.Props &
@@ -62,7 +89,13 @@ type ButtonProps = ButtonPrimitive.Props &
     statusText?: Partial<Record<Exclude<ButtonStatus, "idle">, ReactNode>>
   }
 
+/**
+ * A faint track and an arc that grows, travels, and shrinks while it turns.
+ * The loop ends where it began. It keeps running while hidden, so it never
+ * restarts when it fades in. With reduced motion, a still arc shows instead.
+ */
 function Spinner() {
+  const spline = "0.22 1 0.36 1;0.22 1 0.36 1"
   return (
     <svg
       viewBox="0 0 24 24"
@@ -70,10 +103,50 @@ function Spinner() {
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
-      className="animate-spin motion-reduce:animate-none"
       aria-hidden="true"
     >
-      <circle cx="12" cy="12" r="9" strokeDasharray="42 57" />
+      <circle cx="12" cy="12" r="9" opacity="0.2" />
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        strokeDasharray="1 57"
+        className="motion-reduce:hidden"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 12 12"
+          to="360 12 12"
+          dur="1.6s"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="stroke-dasharray"
+          values="1 57;30 57;1 57"
+          keyTimes="0;0.5;1"
+          calcMode="spline"
+          keySplines={spline}
+          dur="1.2s"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          values="0;-10;-56.5"
+          keyTimes="0;0.5;1"
+          calcMode="spline"
+          keySplines={spline}
+          dur="1.2s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        strokeDasharray="14 57"
+        className="hidden motion-reduce:block"
+      />
     </svg>
   )
 }
@@ -149,6 +222,7 @@ function Button({
         focusableWhenDisabled={focusableWhenDisabled}
         {...props}
       >
+        <span aria-hidden="true" className={fillVariants({ variant })} />
         {children}
       </ButtonPrimitive>
     )
@@ -169,6 +243,7 @@ function Button({
       aria-labelledby={props["aria-label"] ? undefined : `${id}-${status}`}
       {...props}
     >
+      <span aria-hidden="true" className={fillVariants({ variant })} />
       {/* All layers stay mounted in one grid cell, so the width never jumps. */}
       <span className="grid">
         {statuses.map((layer) => {
@@ -184,7 +259,7 @@ function Button({
               className={cn(
                 "col-start-1 row-start-1 inline-flex items-center justify-center",
                 size === "xs" ? "gap-1" : "gap-2",
-                "transition-[opacity,transform] duration-300 ease-calm motion-reduce:transition-opacity",
+                "transition-[opacity,translate] duration-300 ease-calm motion-reduce:transition-opacity",
                 active
                   ? "translate-y-0 opacity-100"
                   : "pointer-events-none translate-y-1 opacity-0 motion-reduce:translate-y-0",
@@ -203,4 +278,10 @@ function Button({
   )
 }
 
-export { Button, type ButtonProps, type ButtonStatus, buttonVariants }
+export {
+  Button,
+  type ButtonProps,
+  type ButtonStatus,
+  buttonVariants,
+  fillVariants,
+}

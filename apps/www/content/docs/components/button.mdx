@@ -7,7 +7,7 @@ import { ButtonDemo, ButtonStates } from "@/components/demos/button"
 
 <ButtonDemo />
 
-Click a button. The label moves to the next state instead of swapping, and the width stays the same. "Publish" fails on purpose, so you can see the error state.
+Hover a button: the fill draws in slightly while the label stays still. Click it: the label moves to the next state instead of swapping, and the width stays the same. "Publish" fails on purpose, so you can see the error state.
 
 ## Install
 
@@ -45,4 +45,4 @@ The same props as the shadcn/ui button (`variant`, `size`, `render`, and every B
 - While loading, the button stays focusable and sets `aria-busy`. This follows Base UI's guidance.
 - The accessible name is the visible label of the current state.
 - A hidden live region announces "Loading", "Done", or "Failed".
-- With reduced motion, the label fades instead of moving, and the spinner stops.
+- With reduced motion, nothing scales or moves. The label fades, and the loader shows a still arc.
