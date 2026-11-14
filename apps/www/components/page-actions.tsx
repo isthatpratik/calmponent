@@ -37,6 +37,11 @@ export function PageActions({
   const url = typeof window === "undefined" ? "" : window.location.href
   const links = [
     {
+      label: "View as Markdown",
+      href:
+        typeof window === "undefined" ? "#" : `${window.location.pathname}.md`,
+    },
+    {
       label: "Open in ChatGPT",
       href: `https://chatgpt.com/?q=${encodeURIComponent(aiPrompt(url))}`,
     },

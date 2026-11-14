@@ -4,6 +4,7 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- Docs for AI tools: `/llms.txt`, `/llms-full.txt`, and every page as Markdown at `/docs/<page>.md`, also linked from the page menu.
 - Docs: a mobile menu. On small screens a full-height panel replaces the sidebar; its links rise in one after another and it closes when you pick a page.
 - Docs: a State control in the page header puts every preview on the page into Loading, Success, Error, Empty, or Disabled. Each demo declares the states it supports, and the control lists only those.
 - Docs: the switch demos fail only on the first change, then always save.
