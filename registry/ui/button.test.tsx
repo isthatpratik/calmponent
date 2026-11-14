@@ -19,8 +19,30 @@ describe("Button", () => {
       </Button>,
     )
     const button = screen.getByRole("button")
-    expect(button.className).toContain("border-border")
     expect(button.className).toContain("h-10")
+    expect(button.className).toContain("cursor-pointer")
+    // The fill is a separate layer, so it can scale without moving the label.
+    const fill = button.querySelector("span[aria-hidden='true']")
+    expect(fill?.className).toContain("border-border")
+    expect(fill?.className).toContain("group-hover/button:scale-97")
+  })
+
+  it("gives the link variant no fill", () => {
+    render(<Button variant="link">Read more</Button>)
+    const fill = screen
+      .getByRole("button")
+      .querySelector("span[aria-hidden='true']")
+    expect(fill?.className).toContain("hidden")
+  })
+
+  it("draws a still arc instead of the moving one with reduced motion", () => {
+    render(<Button status="loading">Save</Button>)
+    const circles = screen
+      .getByRole("button")
+      .querySelectorAll("[data-active] circle")
+    expect(circles).toHaveLength(3)
+    expect(circles[1]?.getAttribute("class")).toContain("motion-reduce:hidden")
+    expect(circles[2]?.getAttribute("class")).toContain("motion-reduce:block")
   })
 
   it("names the button with the active label only", () => {
