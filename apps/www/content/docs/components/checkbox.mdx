@@ -1,0 +1,36 @@
+---
+title: Checkbox
+description: A checkbox whose check draws itself, with indeterminate, invalid, and disabled states.
+---
+
+import { CheckboxDemo, CheckboxStates } from "@/components/demos/choice"
+
+<CheckboxDemo />
+
+Check and uncheck the documents: the check draws and erases itself. "Email me all documents" shows the indeterminate dash when only some are checked.
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/checkbox" />
+
+## Usage
+
+```tsx
+<Field orientation="horizontal">
+  <Checkbox />
+  <FieldLabel>Accept the terms</FieldLabel>
+</Field>
+```
+
+## States
+
+<CheckboxStates />
+
+## Props
+
+Every Base UI `Checkbox.Root` prop: `checked`, `defaultChecked`, `onCheckedChange`, `indeterminate`, `disabled`, `required`, and `name`.
+
+## Accessibility
+
+- The checkbox has `role="checkbox"` and `aria-checked`, including `"mixed"` for indeterminate.
+- With reduced motion, the check and the dash appear without drawing.

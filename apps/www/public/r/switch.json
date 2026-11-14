@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch",
+  "description": "A switch with a pending state for async saves. On failure, the thumb slides back.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "isthatpratik/calmponent/utils",
+    "isthatpratik/calmponent/tokens",
+    "isthatpratik/calmponent/spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/switch.tsx",
+      "content": "\"use client\"\n\nimport { Switch as SwitchPrimitive } from \"@base-ui/react/switch\"\nimport type { ComponentProps } from \"react\"\n\nimport { Spinner } from \"@/components/ui/spinner\"\nimport { cn } from \"@/lib/utils\"\n\ntype SwitchProps = ComponentProps<typeof SwitchPrimitive.Root> & {\n  /**\n   * The change is being saved. The thumb shows a spinner and the switch\n   * ignores input until the result is known. If saving fails, set `checked`\n   * back: the thumb slides back to where it was.\n   */\n  pending?: boolean\n}\n\nfunction Switch({\n  className,\n  pending = false,\n  disabled,\n  ...props\n}: SwitchProps) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      data-pending={pending || undefined}\n      aria-busy={pending || undefined}\n      // Pending blocks input but keeps the switch at full strength.\n      disabled={disabled || pending}\n      className={cn(\n        \"group/switch peer relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border border-transparent bg-input outline-none\",\n        \"transition-[background-color,box-shadow] duration-300 ease-calm\",\n        \"focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n        \"data-[checked]:bg-primary\",\n        \"data-[invalid]:ring-2 data-[invalid]:ring-destructive/40\",\n        \"data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\",\n        \"data-[pending]:cursor-progress data-[pending]:opacity-100\",\n        className,\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"switch-thumb\"\n        className={cn(\n          \"pointer-events-none flex size-4 items-center justify-center rounded-full bg-background shadow-sm\",\n          \"translate-x-0.5 transition-[translate,scale] duration-300 ease-calm\",\n          \"group-data-[checked]/switch:translate-x-4\",\n          \"group-active/switch:scale-90 motion-reduce:group-active/switch:scale-100\",\n          \"motion-reduce:transition-none\",\n        )}\n      >\n        <Spinner\n          decorative\n          className={cn(\n            \"size-3 text-foreground transition-opacity duration-200 ease-calm\",\n            pending ? \"opacity-100\" : \"opacity-0\",\n          )}\n        />\n      </SwitchPrimitive.Thumb>\n    </SwitchPrimitive.Root>\n  )\n}\n\nexport { Switch, type SwitchProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
