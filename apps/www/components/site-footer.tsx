@@ -41,8 +41,8 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3">
           <Logo />
           <p className="caption-2 max-w-64 text-pretty text-muted-foreground">
-            Finished components for shadcn/ui. Every state designed, every
-            motion with a reason.
+            An open-source React UI library for shadcn/ui and Tailwind CSS, with
+            every state built in.
           </p>
         </div>
         {columns.map((column) => (

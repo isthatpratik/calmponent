@@ -8,7 +8,20 @@ export const siteUrl = (
 
 export const site = {
   name: "Calmponent",
+  title: "Calmponent: React UI library for shadcn/ui and Tailwind CSS",
   description:
-    "Finished components for shadcn/ui. Every state designed, every motion with a reason, built on Base UI.",
+    "Calmponent is an open-source React UI library for shadcn/ui and Tailwind CSS. Accessible, animated components with loading, success, error, and empty states built in, on Base UI.",
+  keywords: [
+    "React UI library",
+    "React component library",
+    "shadcn/ui components",
+    "Tailwind CSS components",
+    "Base UI",
+    "accessible React components",
+    "animated React components",
+    "Next.js components",
+    "form components",
+    "open source UI library",
+  ],
   repo: "https://github.com/isthatpratik/calmponent",
 }

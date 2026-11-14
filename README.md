@@ -1,6 +1,6 @@
 # Calmponent
 
-Finished components for shadcn/ui. Every state is designed, every motion has a reason, and people and AI agents can use them correctly.
+An open-source React UI library for shadcn/ui and Tailwind CSS. Accessible, animated components with loading, success, error, and empty states built in, on Base UI.
 
 > Status: v0.1.0, forms core. The decisions are in [`docs/decisions/`](docs/decisions/README.md).
 

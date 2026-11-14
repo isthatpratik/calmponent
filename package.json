@@ -1,7 +1,7 @@
 {
   "name": "calmponent",
   "private": true,
-  "description": "Finished components for shadcn/ui. Every state designed, every motion with a reason, built on Base UI.",
+  "description": "An open-source React UI library for shadcn/ui and Tailwind CSS, with every state built in.",
   "license": "MIT",
   "author": "Pratik Desai",
   "repository": {
@@ -27,5 +27,14 @@
     "@biomejs/biome": "2.6.6",
     "shadcn": "^4.23.0",
     "turbo": "2.11.10"
-  }
+  },
+  "keywords": [
+    "react",
+    "ui-library",
+    "component-library",
+    "shadcn-ui",
+    "tailwindcss",
+    "base-ui",
+    "accessibility"
+  ]
 }

@@ -15,7 +15,7 @@ function Heading({
   return (
     <Tag
       id={id}
-      className={cn("group/heading scroll-mt-12", className)}
+      className={cn("group/heading scroll-mt-24", className)}
       {...props}
     >
       {children}
