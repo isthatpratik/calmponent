@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og"
+import { markDot, markPath } from "@/lib/mark"
 
 export const size = { width: 180, height: 180 }
 export const contentType = "image/png"
@@ -16,26 +17,21 @@ export default function AppleIcon() {
         background: "#000",
       }}
     >
-      <div
-        style={{
-          width: 112,
-          height: 112,
-          borderRadius: 31,
-          border: "12px solid #fafafa",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+      <svg
+        width="128"
+        height="128"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
       >
-        <div
-          style={{
-            width: 30,
-            height: 30,
-            borderRadius: 999,
-            background: "#fafafa",
-          }}
+        <path
+          d={markPath}
+          stroke="#fafafa"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
-      </div>
+        <circle {...markDot} fill="#fafafa" />
+      </svg>
     </div>,
     size,
   )

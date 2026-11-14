@@ -26,7 +26,7 @@ export function CodeBlock({
       <CopyButton
         label="Copy code"
         value={() => ref.current?.textContent ?? ""}
-        className="absolute top-2.5 right-2.5"
+        className="absolute top-2.5 right-2.5 bg-background/80 backdrop-blur-sm"
       />
     </div>
   )

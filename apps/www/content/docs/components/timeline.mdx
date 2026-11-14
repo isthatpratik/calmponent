@@ -6,12 +6,11 @@ description: A timeline of events with done, running, pending, failed, and skipp
 import { Example } from "@/components/example"
 import {
   GlanceTimeline,
-  glanceCode,
   PullRequestTimeline,
-  pullRequestCode,
   TimelineDemo,
   TimelineStates,
 } from "@/components/demos/timeline"
+import { glanceCode, pullRequestCode } from "@/components/demos/timeline-code"
 
 <Example title="A pull request" description="Rails as long as each step took, next to a ghost of the last run." code={pullRequestCode}>
   <PullRequestTimeline />
