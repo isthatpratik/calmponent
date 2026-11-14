@@ -88,7 +88,7 @@ export default function HomePage() {
             </GridCell>
             <GridCell
               title="Switch"
-              description="Pending while it saves. The first change fails on purpose."
+              description="Pending while it saves. Only the first change fails, on purpose."
             >
               <SwitchDemo />
             </GridCell>

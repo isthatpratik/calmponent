@@ -205,7 +205,8 @@ export function SwitchDemo() {
       setOn(!next)
       setError(true)
     }
-    setFailNext((value) => !value)
+    // Only the first change fails; every change after that saves.
+    setFailNext(false)
   }
 
   return (
@@ -222,7 +223,7 @@ export function SwitchDemo() {
         </FieldError>
       </Field>
       <p className="caption-2 mt-4 text-muted-foreground">
-        The first change fails on purpose. The next one saves.
+        The first change fails on purpose. Every change after that saves.
       </p>
     </div>
   )
