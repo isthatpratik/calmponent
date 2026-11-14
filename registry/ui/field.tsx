@@ -2,7 +2,7 @@
 
 import { Field as FieldPrimitive } from "@base-ui/react/field"
 import { cva, type VariantProps } from "class-variance-authority"
-import { type ComponentProps, type ReactNode, useRef } from "react"
+import type { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -53,6 +53,7 @@ function Field({ className, orientation, ...props }: FieldProps) {
   return (
     <FieldPrimitive.Root
       data-slot="field"
+      data-orientation={orientation ?? "vertical"}
       className={cn(fieldVariants({ orientation }), className)}
       {...props}
     />
@@ -110,6 +111,8 @@ function FieldLabel({
           "scale-75 opacity-0 transition-[opacity,scale] duration-300 ease-calm",
           // Only for a filled value: an empty optional field is valid but needs no check.
           "group-data-[valid]/field:group-data-[filled]/field:scale-100 group-data-[valid]/field:group-data-[filled]/field:opacity-100",
+          // Checkboxes, radios, and switches sit in horizontal fields; a check there is noise.
+          "group-data-[orientation=horizontal]/field:hidden",
           "motion-reduce:scale-100",
         )}
       >
@@ -136,20 +139,16 @@ function FieldDescription({
   )
 }
 
-/** Keeps the last message on screen while the error animates out. */
-function LastMessage({ message }: { message: ReactNode }) {
-  const last = useRef<ReactNode>(message)
-  if (message) last.current = message
-  return last.current
-}
-
 /**
  * The error grows in under the field and pushes the content below it down
  * smoothly, then shrinks away when the value is fixed. It never pops.
+ *
+ * Without children, Base UI picks the message: a server error from `Form`
+ * first, then the validation message. It also keeps the last message on
+ * screen while the error animates out.
  */
 function FieldError({
   className,
-  children,
   ...props
 }: ComponentProps<typeof FieldPrimitive.Error>) {
   return (
@@ -164,18 +163,17 @@ function FieldError({
         "motion-reduce:transition-opacity",
         className,
       )}
+      render={(renderProps) => (
+        <div {...renderProps}>
+          <span className="min-h-0 overflow-hidden">
+            <span className="caption-1 block pt-2 text-destructive">
+              {renderProps.children}
+            </span>
+          </span>
+        </div>
+      )}
       {...props}
-    >
-      <span className="min-h-0 overflow-hidden">
-        <span className="caption-1 block pt-2 text-destructive">
-          {children ?? (
-            <FieldPrimitive.Validity>
-              {(validity) => <LastMessage message={validity.error} />}
-            </FieldPrimitive.Validity>
-          )}
-        </span>
-      </span>
-    </FieldPrimitive.Error>
+    />
   )
 }
 

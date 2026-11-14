@@ -69,6 +69,32 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
+  table: ({ className, ...props }) => (
+    <div className="overflow-x-auto rounded-xl border border-border">
+      <table
+        className={cn("body-6 w-full border-collapse", className)}
+        {...props}
+      />
+    </div>
+  ),
+  th: ({ className, ...props }) => (
+    <th
+      className={cn(
+        "caption-3 border-border border-b bg-card px-4 py-2.5 text-left text-muted-foreground",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  td: ({ className, ...props }) => (
+    <td
+      className={cn(
+        "border-border border-t px-4 py-2.5 align-top text-muted-foreground first:text-foreground",
+        className,
+      )}
+      {...props}
+    />
+  ),
   pre: CodeBlock,
   InstallCommand,
 }
