@@ -2,7 +2,7 @@
 
 Finished components for shadcn/ui. Every state is designed, every motion has a reason, and people and AI agents can use them correctly.
 
-> Status: planning. There is no code yet. We are making the decisions in [`docs/decisions/`](docs/decisions/README.md) first.
+> Status: v0.1.0, forms core. The decisions are in [`docs/decisions/`](docs/decisions/README.md).
 
 ## Why
 
@@ -28,13 +28,15 @@ The full list, with the open decisions, is in the [decision backlog](docs/decisi
 
 ## Install
 
-There are no components yet. The first registry item is the `cn()` helper:
+Add any component with the shadcn CLI:
 
 ```bash
-npx shadcn@latest add isthatpratik/calmponent/utils
+npx shadcn@latest add isthatpratik/calmponent/button
 ```
 
-The shorter `@calmponent/...` form comes when the docs site is hosted. See [ADR 0004](docs/decisions/0004-distribution.md).
+Components in v0.1.0: `button`, `field`, `input`, `textarea`, `checkbox`, `radio-group`, `switch`, `select`, `form`, and `toast`, plus `spinner`. Each one has every state built in: loading, success, error, empty, and disabled where they apply.
+
+Pin a release with a tag, for example `isthatpratik/calmponent/button#v0.1.0`. The shorter `@calmponent/...` form comes when the docs site is hosted. See [ADR 0004](docs/decisions/0004-distribution.md).
 
 ## Contributing
 

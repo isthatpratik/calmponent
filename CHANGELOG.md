@@ -4,6 +4,12 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+Nothing yet.
+
+## 0.1.0 (2026-11-14)
+
+Forms core: the first 10 components, each with every state built in.
+
 - `form`: submitting, server field errors, a form error, and success built in. `FormSubmit` and `FormMessage` follow the form's state.
 - `field`: `FieldError` now shows server errors from `Form`, and the valid check no longer shows on checkbox, radio, and switch fields.
 - `toast`: `toast()`, `toast.success`, `toast.error` with actions, `toast.warning`, and `toast.promise` that turns loading into its result in place. Toasts stack, spread out on hover, and swipe away.
