@@ -6,7 +6,7 @@ type Theme = "light" | "dark"
 const key = "calmponent-theme"
 
 /** Runs before paint, so the page never flashes the wrong theme. */
-export const themeScript = `try{var t=localStorage.getItem("${key}");document.documentElement.classList.toggle("dark",t!=="light")}catch(e){}`
+export const themeScript = `try{var d=document.documentElement,t=localStorage.getItem("${key}");d.classList.toggle("dark",t!=="light");var l=JSON.parse(localStorage.getItem("calmponent-look")||"null");if(l){var r=["0px","4px","6px","8px","12px","9999px"][l.shape];if(r)d.style.setProperty("--radius",r);var a={blue:"#2563eb",rose:"#be123c"}[l.accent];if(a){d.style.setProperty("--primary",a);d.style.setProperty("--primary-foreground","#ffffff");d.style.setProperty("--ring",a)}var f={system:"ui-sans-serif, system-ui, sans-serif",mono:"var(--font-geist-mono)"}[l.font];if(f)d.style.setProperty("--font-geist-sans",f);d.dataset.motion=l.motion===false?"off":"on"}}catch(e){}`
 
 function Sun() {
   return (

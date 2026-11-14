@@ -4,6 +4,8 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- Docs: a Customize panel to preview components in your look: accent (mono, blue, rose), shape from square to pill, typeface, and motion. Copy setup, copy link, copy tokens, and reset. Choices persist and apply before paint.
+- Tokens: `xl` and `2xl` radii are capped at 16px and 20px, so a pill radius rounds controls, not whole surfaces.
 - `switch`: now a full pill with a round thumb; pressing stretches it into a capsule.
 - Landing grid: dots are opaque and centred exactly on the dashed lines.
 - `tabs`: a pill or underline that slides to the chosen tab, panels that arrive from the side of the choice, disabled tabs, and a loading state.

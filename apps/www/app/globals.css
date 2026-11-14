@@ -138,8 +138,9 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  /* Surfaces are capped, so a pill radius rounds controls, not whole cards. */
+  --radius-xl: min(calc(var(--radius) + 4px), 16px);
+  --radius-2xl: min(calc(var(--radius) + 8px), 20px);
 
   /* The one motion curve. Use with duration-200, duration-300, or duration-500. */
   --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
