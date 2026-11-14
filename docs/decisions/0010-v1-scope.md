@@ -1,6 +1,6 @@
 # 0010: v1 scope
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-14
 - Backlog item: D12
 
@@ -20,7 +20,7 @@ Facts checked on 2026-11-14:
 3. **Base UI where it exists.** Plain HTML only where Base UI has no primitive.
 4. **Prefer fewer, finished components.** 24 finished components beat 60 half-finished ones.
 
-## Decision (proposed, not final)
+## Decision
 
 24 components, shipped in three releases.
 
