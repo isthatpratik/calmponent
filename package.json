@@ -20,7 +20,8 @@
     "lint": "biome lint .",
     "format": "biome format --write .",
     "check": "biome check .",
-    "registry:build": "shadcn build ./registry.json --output ./apps/www/public/r"
+    "registry:build": "shadcn build ./registry.json --output ./apps/www/public/r",
+    "check:contrast": "node scripts/check-contrast.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",

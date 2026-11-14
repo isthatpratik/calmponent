@@ -1,6 +1,7 @@
 import type { Node } from "fumadocs-core/page-tree"
 import Link from "next/link"
 import type { ReactNode } from "react"
+import { NavLink } from "@/components/nav-link"
 import { source } from "@/lib/source"
 
 function TreeNodes({ nodes }: { nodes: Node[] }) {
@@ -10,16 +11,14 @@ function TreeNodes({ nodes }: { nodes: Node[] }) {
         if (node.type === "page") {
           return (
             <li key={node.url}>
-              <Link href={node.url} className="hover:underline">
-                {node.name}
-              </Link>
+              <NavLink href={node.url}>{node.name}</NavLink>
             </li>
           )
         }
         if (node.type === "folder") {
           return (
             <li key={node.$id ?? String(node.name)} className="pt-2">
-              <span className="font-medium">{node.name}</span>
+              <span className="title-4">{node.name}</span>
               <div className="pl-3">
                 <TreeNodes nodes={node.children} />
               </div>
@@ -29,7 +28,7 @@ function TreeNodes({ nodes }: { nodes: Node[] }) {
         return (
           <li
             key={node.$id ?? String(node.name)}
-            className="pt-4 text-neutral-500"
+            className="caption-3 pt-4 text-muted-foreground"
           >
             {node.name}
           </li>
@@ -41,9 +40,9 @@ function TreeNodes({ nodes }: { nodes: Node[] }) {
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto flex max-w-5xl gap-12 px-6 py-12">
-      <nav aria-label="Docs" className="w-48 shrink-0 text-sm">
-        <Link href="/" className="mb-6 block font-semibold">
+    <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-12 md:flex-row md:gap-12">
+      <nav aria-label="Docs" className="body-6 w-full shrink-0 md:w-48">
+        <Link href="/" className="title-3 mb-6 block">
           Calmponent
         </Link>
         <TreeNodes nodes={source.pageTree.children} />

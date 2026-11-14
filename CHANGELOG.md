@@ -4,7 +4,7 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
-Nothing yet.
+- Design tokens (ADR 0009): monochrome colors, status colors, Geist, text styles, radius, and the `ease-calm` motion curve. A contrast check runs in CI.
 
 ## 0.0.1 (2026-11-14)
 
