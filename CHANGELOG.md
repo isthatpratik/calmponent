@@ -4,6 +4,7 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- `select`: an empty state inside the list, invalid and disabled states, a list that scales in from its trigger, and a chevron that turns as it opens.
 - `checkbox`: the check draws itself, with indeterminate, invalid, and disabled states.
 - `radio-group`: the dot grows in and the previous one shrinks out.
 - `switch`: a pending state for async saves. On failure, the thumb slides back and a message explains why.

@@ -434,6 +434,25 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A select with an empty state, invalid and disabled states, and a list that scales in from its trigger.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
