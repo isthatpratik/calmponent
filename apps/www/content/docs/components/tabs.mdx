@@ -1,0 +1,33 @@
+---
+title: Tabs
+description: Tabs with a highlight that slides to the chosen tab, panels that follow the direction of the choice, disabled tabs, and a loading state.
+---
+
+import { Example } from "@/components/example"
+import { TabsDemo, TabsLineDemo, tabsCode, tabsLineCode } from "@/components/demos/tabs"
+
+<Example title="Settings" description="The pill slides to the chosen tab, and the panel arrives from that side. SSO is disabled." code={tabsCode}>
+  <TabsDemo />
+</Example>
+
+<Example title="Line variant, with loading" description="Open Activity: the panel shows a skeleton until its data arrives." code={tabsLineCode}>
+  <TabsLineDemo />
+</Example>
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/tabs" />
+
+## Parts
+
+The same names as the shadcn/ui tabs: `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent`.
+
+- `TabsList` takes `variant`: `"default"` (a sliding pill) or `"line"` (a sliding underline).
+- `TabsTrigger` takes `value` and `disabled`.
+- `TabsContent` takes `value` and `loading`, which shows skeleton lines shaped like content.
+
+## Accessibility
+
+- Base UI handles the tablist roles: arrow keys move between tabs, and disabled tabs are skipped.
+- A loading panel sets `aria-busy`.
+- With reduced motion, the highlight jumps instead of sliding, and panels fade without moving.
