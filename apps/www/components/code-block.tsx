@@ -18,7 +18,7 @@ export function CodeBlock({
         ref={ref}
         className={cn(
           "well overflow-x-auto p-4 pr-12 font-mono text-sm",
-          "[&_code]:bg-transparent [&_code]:p-0 [&_code]:text-sm",
+          "[&_code]:bg-transparent [&_code]:p-0 [&_code]:text-sm [&_code]:shadow-none",
           className,
         )}
         {...props}

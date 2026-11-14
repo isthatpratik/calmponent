@@ -47,7 +47,7 @@ Input borders: `#6B6B6B` on `#181818` (3.33) in dark mode, `#858585` on `#F5F5F5
 
 Exception: the switch is a full pill (track and thumb), because a mid radius on a 24px track reads as neither pill nor rectangle.
 
-The scale is additive: `sm` = radius − 4px, `md` = radius − 2px, `lg` = radius, `xl` = radius + 4px, `2xl` = radius + 8px. shadcn/ui now multiplies instead (`xl` = radius × 1.4 = 11.2px), which lands off the Tailwind scale. The additive scale is still derived from `--radius`, so a user can retheme it with one value. Nested shapes follow the formula: inner radius = outer radius minus the gap, when the gap is under 32px.
+The scale is additive: `sm` = radius − 4px, `md` = radius − 2px, `lg` = radius, `xl` = radius + 4px (at most 16px), `2xl` = radius + 8px (at most 20px). The caps keep surfaces calm when `--radius` is set to a pill. shadcn/ui now multiplies instead (`xl` = radius × 1.4 = 11.2px), which lands off the Tailwind scale. The additive scale is still derived from `--radius`, so a user can retheme it with one value. Nested shapes follow the formula: inner radius = outer radius minus the gap, when the gap is under 32px.
 
 ### Motion
 

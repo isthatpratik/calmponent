@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Customizer } from "@/components/customizer"
 import { Logo } from "@/components/logo"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -45,6 +46,7 @@ export function SiteHeader() {
           >
             v0.1.0
           </Link>
+          <Customizer />
           <ThemeToggle />
           <Link
             href="https://github.com/isthatpratik/calmponent"

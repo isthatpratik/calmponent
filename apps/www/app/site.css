@@ -12,3 +12,13 @@
     inset 0 1px 3px rgb(0 0 0 / 0.35),
     inset 0 0 0 1px var(--border);
 }
+
+/* Customizer: motion off previews every component without animation. */
+[data-motion="off"] *,
+[data-motion="off"] *::before,
+[data-motion="off"] *::after {
+  /* biome-ignore lint/complexity/noImportantStyles: a preview switch must override every component */
+  transition-duration: 0s !important;
+  /* biome-ignore lint/complexity/noImportantStyles: a preview switch must override every component */
+  animation: none !important;
+}
