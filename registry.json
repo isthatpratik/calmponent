@@ -283,6 +283,21 @@
       ]
     },
     {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A dash ring loader that loops seamlessly and shows a still arc with reduced motion.",
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
@@ -293,11 +308,52 @@
       ],
       "registryDependencies": [
         "isthatpratik/calmponent/utils",
-        "isthatpratik/calmponent/tokens"
+        "isthatpratik/calmponent/tokens",
+        "isthatpratik/calmponent/spinner"
       ],
       "files": [
         {
           "path": "registry/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A text input with invalid, read only, disabled, and checking states.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens",
+        "isthatpratik/calmponent/spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Label, description, and error for a form control. Errors grow in and out, and a check appears when the value is valid.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/field.tsx",
           "type": "registry:ui"
         }
       ]

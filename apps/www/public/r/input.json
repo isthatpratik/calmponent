@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input",
+  "description": "A text input with invalid, read only, disabled, and checking states.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "isthatpratik/calmponent/utils",
+    "isthatpratik/calmponent/tokens",
+    "isthatpratik/calmponent/spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/input.tsx",
+      "content": "\"use client\"\n\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\nimport type { ComponentProps } from \"react\"\n\nimport { Spinner } from \"@/components/ui/spinner\"\nimport { cn } from \"@/lib/utils\"\n\nconst inputClasses = [\n  \"body-6 h-9 w-full min-w-0 rounded-lg border border-input bg-transparent px-3 text-foreground outline-none\",\n  \"transition-[border-color,box-shadow,background-color] duration-200 ease-calm\",\n  \"placeholder:text-muted-foreground\",\n  \"file:mr-3 file:border-0 file:bg-transparent file:font-medium file:text-foreground\",\n  \"focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30\",\n  // Base UI sets data-invalid from validation, and aria-invalid for assistive tech.\n  \"data-[invalid]:border-destructive data-[invalid]:focus-visible:ring-destructive/30 aria-[invalid=true]:border-destructive\",\n  \"read-only:bg-muted read-only:focus-visible:ring-0\",\n  \"disabled:cursor-not-allowed disabled:opacity-50\",\n]\n\ntype InputProps = ComponentProps<typeof InputPrimitive> & {\n  /**\n   * Shows that a value is being checked, for example a username lookup.\n   * Leave it unset for a plain input.\n   */\n  loading?: boolean\n}\n\nfunction Input({ className, loading, ...props }: InputProps) {\n  if (loading === undefined) {\n    return (\n      <InputPrimitive\n        data-slot=\"input\"\n        className={cn(inputClasses, className)}\n        {...props}\n      />\n    )\n  }\n\n  return (\n    <span data-slot=\"input-wrapper\" className=\"relative block w-full\">\n      <InputPrimitive\n        data-slot=\"input\"\n        aria-busy={loading || undefined}\n        className={cn(inputClasses, \"pr-9\", className)}\n        {...props}\n      />\n      {/* Stays mounted and keeps turning, so it fades in mid-turn. */}\n      <Spinner\n        decorative\n        className={cn(\n          \"-translate-y-1/2 pointer-events-none absolute top-1/2 right-3 text-muted-foreground\",\n          \"transition-[opacity,scale] duration-300 ease-calm motion-reduce:transition-opacity\",\n          loading\n            ? \"scale-100 opacity-100\"\n            : \"scale-75 opacity-0 motion-reduce:scale-100\",\n        )}\n      />\n      <span role=\"status\" className=\"sr-only\">\n        {loading ? \"Checking\" : \"\"}\n      </span>\n    </span>\n  )\n}\n\nexport { Input, type InputProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

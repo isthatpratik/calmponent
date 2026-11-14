@@ -4,6 +4,7 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 import { type ReactNode, useId } from "react"
 
+import { Spinner } from "@/components/ui/spinner"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -89,68 +90,6 @@ type ButtonProps = ButtonPrimitive.Props &
     statusText?: Partial<Record<Exclude<ButtonStatus, "idle">, ReactNode>>
   }
 
-/**
- * A faint track and an arc that grows, travels, and shrinks while it turns.
- * The loop ends where it began. It keeps running while hidden, so it never
- * restarts when it fades in. With reduced motion, a still arc shows instead.
- */
-function Spinner() {
-  const spline = "0.22 1 0.36 1;0.22 1 0.36 1"
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="9" opacity="0.2" />
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        strokeDasharray="1 57"
-        className="motion-reduce:hidden"
-      >
-        <animateTransform
-          attributeName="transform"
-          type="rotate"
-          from="0 12 12"
-          to="360 12 12"
-          dur="1.6s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="stroke-dasharray"
-          values="1 57;30 57;1 57"
-          keyTimes="0;0.5;1"
-          calcMode="spline"
-          keySplines={spline}
-          dur="1.2s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="stroke-dashoffset"
-          values="0;-10;-56.5"
-          keyTimes="0;0.5;1"
-          calcMode="spline"
-          keySplines={spline}
-          dur="1.2s"
-          repeatCount="indefinite"
-        />
-      </circle>
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        strokeDasharray="14 57"
-        className="hidden motion-reduce:block"
-      />
-    </svg>
-  )
-}
-
 function SuccessIcon() {
   return (
     <svg
@@ -186,7 +125,7 @@ function ErrorIcon() {
 
 const statusIcons: Record<ButtonStatus, ReactNode> = {
   idle: null,
-  loading: <Spinner />,
+  loading: <Spinner decorative />,
   success: <SuccessIcon />,
   error: <ErrorIcon />,
 }

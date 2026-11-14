@@ -1,0 +1,31 @@
+---
+title: Spinner
+description: A dash ring loader. It loops seamlessly and shows a still arc with reduced motion.
+---
+
+import { SpinnerDemo } from "@/components/demos/input"
+
+<SpinnerDemo />
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/spinner" />
+
+## Usage
+
+```tsx
+<Spinner />
+```
+
+Size it with `className`, for example `size-6`. It uses the current text color.
+
+## Props
+
+Every SVG attribute, plus:
+
+- `decorative`: hides the spinner from assistive tech. Use it inside a component that already announces loading, as `button` and `input` do.
+
+## Accessibility
+
+- By default, the spinner has `role="status"` and the label "Loading".
+- SVG animation ignores the reduced-motion setting, so the spinner swaps to a still arc itself.

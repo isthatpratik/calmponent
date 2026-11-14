@@ -1,0 +1,31 @@
+---
+title: Input
+description: A text input with invalid, read only, disabled, and checking states.
+---
+
+import { InputStates } from "@/components/demos/input"
+
+<InputStates />
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/input" />
+
+## Usage
+
+```tsx
+<Input placeholder="Ada Lovelace" />
+```
+
+Set `loading` while you check a value, for example a username lookup. Leave it unset for a plain input. Use it inside `Field` for a label and errors.
+
+## Props
+
+Every Base UI `Input` prop and native input attribute, plus:
+
+- `loading`: shows a spinner inside the input and announces "Checking". Unset means a plain input with no wrapper.
+
+## Accessibility
+
+- While checking, the input sets `aria-busy`, and a hidden live region announces "Checking".
+- The spinner stays mounted, so it fades in mid-turn instead of starting from a jump.

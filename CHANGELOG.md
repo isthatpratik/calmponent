@@ -4,6 +4,9 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- `field`: label, description, and error. Errors grow in and out without layout jumps, a check appears for valid filled values, and async validation is supported.
+- `input`: invalid, read only, disabled, and a checking state with an inline spinner.
+- `spinner`: the dash ring loader as its own item. `button` and `input` use it.
 - Design tokens (ADR 0009): monochrome colors, status colors, Geist, text styles, radius, and the `ease-calm` motion curve. A contrast check runs in CI.
 - `button`: loading, success, and error states with a stable width, focus kept while loading, and a live region. Install with `npx shadcn@latest add isthatpratik/calmponent/button`.
 - `button`: the fill draws in on hover (scale 0.97), the loader is a dash ring that grows and travels, and the pointer cursor is back. Fixed: the status label and press now animate (Tailwind 4 `scale` and `translate` are separate properties).
