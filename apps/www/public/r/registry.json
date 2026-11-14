@@ -496,6 +496,23 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "A timeline of events with done, running, pending, failed, and skipped states. Connectors draw down as steps finish, and loading and empty states are built in.",
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens",
+        "isthatpratik/calmponent/spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

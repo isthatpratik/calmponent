@@ -1,0 +1,40 @@
+---
+title: Timeline
+description: A timeline of events with done, running, pending, failed, and skipped states. Connectors draw down as steps finish, and loading and empty states are built in.
+---
+
+import { TimelineDemo, TimelineStates } from "@/components/demos/timeline"
+
+<TimelineDemo />
+
+Run the deploy: the running step turns, and when it finishes, its line draws down to the next step while the new icon pops in. A failed step marks the rest as skipped.
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/timeline" />
+
+## Usage
+
+```tsx
+<Timeline>
+  <TimelineItem status="done" title="Build" time="09:41:11" duration="31s" />
+  <TimelineItem status="running" title="Deploy" time="09:41:42" />
+  <TimelineItem status="pending" title="Verify" />
+</Timeline>
+```
+
+## States
+
+<TimelineStates />
+
+## Parts
+
+- `Timeline`: an ordered list. Takes `loading` (skeleton rows shaped like items), `loadingRows` (default `3`), and `empty` (shown when there are no items).
+- `TimelineItem`: takes `status` (`"done"`, `"running"`, `"pending"`, `"failed"`, or `"skipped"`), `title`, `description`, `time`, and `duration`.
+
+## Accessibility
+
+- The timeline is an ordered list, so screen readers announce the number of steps.
+- Each item adds its status as hidden text, for example "Build, Done", so color is never the only signal.
+- The running item has `aria-current="step"`.
+- With reduced motion, the line fills without drawing, icons appear without popping, and the skeleton does not pulse.
