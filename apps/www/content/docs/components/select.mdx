@@ -1,0 +1,50 @@
+---
+title: Select
+description: A select with an empty state, invalid and disabled states, and a list that scales in from its trigger.
+---
+
+import { SelectDemo, SelectStates } from "@/components/demos/select"
+
+<SelectDemo />
+
+Open it: the list scales in from the trigger, and the chevron turns. The check moves to the item you choose.
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/select" />
+
+## Usage
+
+```tsx
+<Select items={regions}>
+  <SelectTrigger>
+    <SelectValue placeholder="Choose a region" />
+  </SelectTrigger>
+  <SelectContent empty="No regions available.">
+    {regions.map((region) => (
+      <SelectItem key={region.value} value={region.value}>
+        {region.label}
+      </SelectItem>
+    ))}
+  </SelectContent>
+</Select>
+```
+
+Pass `items` to `Select` so the trigger can show the label of the chosen value before the list has opened.
+
+## States
+
+<SelectStates />
+
+## Parts
+
+The same names as the shadcn/ui select: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectGroup`, `SelectLabel`, `SelectItem`, `SelectSeparator`, `SelectScrollUpButton`, and `SelectScrollDownButton`.
+
+- `SelectTrigger` takes `size`: `"default"` or `"sm"`.
+- `SelectContent` takes `empty`: the message shown when there are no items. It also takes `side`, `align`, their offsets, and `alignItemWithTrigger` (on by default, as in shadcn/ui).
+
+## Accessibility
+
+- Base UI handles the listbox roles, typeahead, and keyboard navigation.
+- The empty message is shown inside the list, so the open list is never blank.
+- With reduced motion, the list fades without scaling, and the chevron turns without animation.
