@@ -28,7 +28,7 @@ const regions = [
 
 export function SelectDemo() {
   return (
-    <div className="rounded-xl border border-border bg-card p-6">
+    <div className="well p-6">
       <Field className="max-w-xs">
         <FieldLabel>Region</FieldLabel>
         <Select items={regions} defaultValue="bom">
@@ -58,7 +58,7 @@ export function SelectDemo() {
 
 function Cell({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="flex flex-col gap-2 bg-card p-4">
+    <div className="flex flex-col gap-2 bg-background p-4">
       <span className="caption-3 text-muted-foreground">{label}</span>
       {children}
     </div>

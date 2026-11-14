@@ -25,7 +25,7 @@ const data = sample(26)
 
 export function HeatmapDemo() {
   return (
-    <div className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6">
+    <div className="flex flex-col gap-4 well p-6">
       <div className="flex items-baseline justify-between gap-4">
         <span className="title-4">Commits, last 6 months</span>
         <span className="caption-2 text-muted-foreground tabular-nums">
@@ -40,11 +40,11 @@ export function HeatmapDemo() {
 export function HeatmapStates() {
   return (
     <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-2">
-      <div className="flex flex-col gap-3 bg-card p-4">
+      <div className="flex flex-col gap-3 bg-background p-4">
         <span className="caption-3 text-muted-foreground">loading</span>
         <Heatmap data={[]} weeks={12} endDate={endDate} loading />
       </div>
-      <div className="flex flex-col gap-3 bg-card p-4">
+      <div className="flex flex-col gap-3 bg-background p-4">
         <span className="caption-3 text-muted-foreground">empty</span>
         <Heatmap
           data={[]}

@@ -1,6 +1,5 @@
 import { getBreadcrumbItems } from "fumadocs-core/breadcrumb"
 import type { Metadata } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { mdxComponents } from "@/components/mdx"
 import { PageActions } from "@/components/page-actions"
@@ -36,51 +35,39 @@ export default async function DocPage(props: PageProps<"/docs/[[...slug]]">) {
     includePage: false,
   })
 
+  const section =
+    crumbs.length > 0 ? String(crumbs[crumbs.length - 1]?.name) : "Docs"
+  const siblings = page.url.split("/").slice(0, -1).join("/")
+  const number = source
+    .getPages()
+    .filter((entry) => entry.url.split("/").slice(0, -1).join("/") === siblings)
+    .sort((x, y) => x.url.localeCompare(y.url))
+    .findIndex((entry) => entry.url === page.url)
+
   return (
-    <div className="flex gap-12">
+    <div className="flex gap-12 px-6 py-10 sm:px-10 lg:px-14 lg:py-14">
       <article className="min-w-0 flex-1">
-        {crumbs.length > 0 ? (
-          <nav aria-label="Breadcrumb" className="caption-2 mb-4">
-            <ol className="flex items-center gap-2 text-muted-foreground">
-              {crumbs.map((crumb) => (
-                <li
-                  key={String(crumb.url ?? crumb.name)}
-                  className="flex items-center gap-2"
-                >
-                  {crumb.url ? (
-                    <Link
-                      href={crumb.url}
-                      className="transition-colors duration-200 ease-calm hover:text-foreground"
-                    >
-                      {crumb.name}
-                    </Link>
-                  ) : (
-                    <span>{crumb.name}</span>
-                  )}
-                  <span aria-hidden="true">/</span>
-                </li>
-              ))}
-              <li aria-current="page" className="text-foreground">
-                {page.data.title}
-              </li>
-            </ol>
-          </nav>
-        ) : null}
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <h1 className="heading-4">{page.data.title}</h1>
-          <PageActions
-            markdown={toPlainMarkdown(
-              `# ${page.data.title}\n\n${page.data.description ?? ""}\n\n${markdown}`,
-            )}
-            title={page.data.title}
-          />
-        </div>
-        {page.data.description ? (
-          <p className="body-3 mt-2 text-muted-foreground">
-            {page.data.description}
-          </p>
-        ) : null}
-        <div className="body-3 mt-8 space-y-4">
+        <header className="flex flex-col gap-4 border-border/60 border-b pb-8">
+          <span className="caption-5 font-mono text-muted-foreground uppercase tracking-wider">
+            {section}
+            {number >= 0 ? ` · ${String(number + 1).padStart(2, "0")}` : ""}
+          </span>
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <h1 className="heading-4 text-foreground">{page.data.title}</h1>
+            <PageActions
+              markdown={toPlainMarkdown(
+                `# ${page.data.title}\n\n${page.data.description ?? ""}\n\n${markdown}`,
+              )}
+              title={page.data.title}
+            />
+          </div>
+          {page.data.description ? (
+            <p className="body-3 max-w-[60ch] text-pretty text-muted-foreground">
+              {page.data.description}
+            </p>
+          ) : null}
+        </header>
+        <div className="body-3 mt-10 flex flex-col gap-6">
           <MDX components={mdxComponents} />
         </div>
       </article>

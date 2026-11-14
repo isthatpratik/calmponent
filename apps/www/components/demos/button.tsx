@@ -38,7 +38,7 @@ export function ButtonDemo() {
   const publish = useFakeAction("error")
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-xl border border-border bg-card p-6">
+    <div className="flex flex-wrap items-center gap-3 well p-6">
       <Button
         status={save.status}
         statusText={{ loading: "Saving", success: "Saved", error: "Try again" }}
@@ -81,7 +81,7 @@ const states: { label: string; props: Partial<ButtonProps> }[] = [
 
 export function ButtonStates() {
   return (
-    <div className="overflow-x-auto rounded-xl border border-border bg-card">
+    <div className="overflow-x-auto well">
       <table className="w-full border-collapse">
         <thead>
           <tr>

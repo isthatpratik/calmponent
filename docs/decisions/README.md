@@ -18,7 +18,7 @@ Rules:
 | D4 | Frameworks | Which frameworks do we support and test? Next.js App Router, Vite, React Router, Astro, TanStack Start. Server Components? | Accepted. See [0005](0005-frameworks.md). | accepted |
 | D5 | Releases and versions | Semver for the registry? Git tags, changelog, how users find updates, breaking-change policy. | Accepted. See [0006](0006-releases.md). | accepted |
 | D6 | Design system | Colors, themes (light and dark), type, spacing, radius, shadows, motion tokens. How users theme it. | Accepted. See [0009](0009-design-system.md). | accepted |
-| D7 | Site structure | Landing page, showcase, blocks, docs, theme tuner, states matrix. Navigation and URLs. | Decide after the first components exist, so the site can show them. | open |
+| D7 | Site structure | Landing page, showcase, blocks, docs, theme tuner, states matrix. Navigation and URLs. | Accepted. See [0011](0011-site-structure.md). | accepted |
 | D8 | Docs stack | Fumadocs, Nextra, or custom on Next.js. Search, MDX, live previews, "Copy for AI". | Accepted: Fumadocs, headless. See [0008](0008-docs-stack.md). | accepted |
 | D9 | Quality gates | Accessibility tests, visual regression, bundle size limits, reduced motion checks, browser matrix, CI. | All four gates in CI before v1. | open |
 | D10 | AI readiness | `llms.txt`, Claude Code skill, prop JSON schemas, shadcn MCP support, published agent test results. | All of them, with a test that measures agent output. | open |
@@ -40,3 +40,4 @@ Rules:
 - [0008: Docs stack](0008-docs-stack.md), D8 (2026-11-14)
 - [0009: Design system](0009-design-system.md), D6 (2026-11-14)
 - [0010: v1 scope](0010-v1-scope.md), D12 (2026-11-14)
+- [0011: Site structure](0011-site-structure.md), D7 (2026-11-14)

@@ -15,7 +15,7 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export function FormDemo() {
   return (
-    <div className="rounded-xl border border-border bg-card p-6">
+    <div className="well p-6">
       <Form
         className="max-w-sm"
         onFormSubmit={async (values) => {

@@ -31,7 +31,7 @@ export function Example({
           ) : null}
         </div>
         {code ? (
-          <Tabs.List className="relative flex gap-1 rounded-lg bg-muted p-1">
+          <Tabs.List className="relative flex gap-1 rounded-lg bg-background p-1 shadow-[inset_0_0_0_1px_var(--border)]">
             {["preview", "code"].map((value) => (
               <Tabs.Tab
                 key={value}
@@ -41,19 +41,16 @@ export function Example({
                 {value}
               </Tabs.Tab>
             ))}
-            <Tabs.Indicator className="absolute top-1/2 left-0 h-[calc(100%-0.5rem)] w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-1/2 rounded-md bg-background shadow-sm transition-[translate,width] duration-300 ease-snap motion-reduce:transition-none" />
+            <Tabs.Indicator className="absolute top-1/2 left-0 h-[calc(100%-0.5rem)] w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-1/2 rounded-md bg-muted transition-[translate,width] duration-300 ease-snap motion-reduce:transition-none" />
           </Tabs.List>
         ) : null}
       </div>
-      <Tabs.Panel
-        value="preview"
-        className="rounded-xl border border-border bg-card p-6 outline-none sm:p-10"
-      >
+      <Tabs.Panel value="preview" className="well p-6 outline-none sm:p-10">
         {children}
       </Tabs.Panel>
       {code ? (
         <Tabs.Panel value="code" className="relative outline-none">
-          <pre className="max-h-[32rem] overflow-auto rounded-xl border border-border bg-card p-4 pr-12 font-mono text-sm">
+          <pre className="well max-h-[32rem] overflow-auto p-4 pr-12 font-mono text-sm">
             <code>{code.trim()}</code>
           </pre>
           <CopyButton

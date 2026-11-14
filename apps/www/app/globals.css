@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import "./site.css";
+
 /* Scan the registry for class names. */
 @source "../../../registry";
 

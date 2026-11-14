@@ -69,7 +69,7 @@ export function TimelineDemo() {
 
   let elapsed = 0
   return (
-    <div className="flex flex-col gap-6 rounded-xl border border-border bg-card p-6">
+    <div className="flex flex-col gap-6 well p-6">
       <div className="flex items-center justify-between gap-4">
         <div className="flex flex-col gap-0.5">
           <span className="title-4">Deploy calmponent.dev</span>
@@ -121,7 +121,7 @@ export function TimelineDemo() {
 export function TimelineStates() {
   return (
     <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-3">
-      <div className="flex flex-col gap-3 bg-card p-4">
+      <div className="flex flex-col gap-3 bg-background p-4">
         <span className="caption-3 text-muted-foreground">every status</span>
         <Timeline>
           <TimelineItem status="done" title="Done" time="09:41" />
@@ -131,11 +131,11 @@ export function TimelineStates() {
           <TimelineItem status="pending" title="Pending" />
         </Timeline>
       </div>
-      <div className="flex flex-col gap-3 bg-card p-4">
+      <div className="flex flex-col gap-3 bg-background p-4">
         <span className="caption-3 text-muted-foreground">loading</span>
         <Timeline loading />
       </div>
-      <div className="flex flex-col gap-3 bg-card p-4">
+      <div className="flex flex-col gap-3 bg-background p-4">
         <span className="caption-3 text-muted-foreground">empty</span>
         <Timeline empty="No deploys yet. Push to main to start one." />
       </div>

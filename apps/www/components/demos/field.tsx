@@ -17,7 +17,7 @@ export function FieldDemo() {
   const [checking, setChecking] = useState(false)
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6">
+    <div className="well p-6">
       <FieldGroup className="max-w-sm">
         <Field validationMode="onBlur">
           <FieldLabel required>Email</FieldLabel>
@@ -118,7 +118,7 @@ export function FieldStates() {
           ),
         },
       ].map((state) => (
-        <div key={state.label} className={`${cell} bg-card`}>
+        <div key={state.label} className={`${cell} bg-background`}>
           <span className="caption-3 text-muted-foreground">{state.label}</span>
           {state.node}
         </div>
