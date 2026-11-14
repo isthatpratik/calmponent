@@ -18,7 +18,8 @@ Current phase: **v0.1.0 released (forms core)**. Next: the site (milestone "Site
 
 ## Design work
 
-- Follow the design system in [ADR 0009](docs/decisions/0009-design-system.md) for type, color, radius, and motion.
+- Follow [`DESIGN.md`](DESIGN.md) for color, type, radius, motion, the mark, and the voice. The reasons are in [ADR 0009](docs/decisions/0009-design-system.md). Keep `DESIGN.md` up to date when a token or rule changes.
+- The design system and brand rules are for the people and agents who build Calmponent. Do not publish them as site pages.
 - Motion rules: every motion has a cause, parts stay mounted and move instead of popping, and loops end where they began.
 - The user's taste: full monochrome (black, white, grays) is preferred over a single brand accent. A single accent color on monochrome "still feels AI" to them. Color is for status only. References they like: polar.sh, primora.xyz, unkey.com, dovetail.com, cardcn.dev.
 - Avoid the generic "premium dark" gallery look that most component sites use.

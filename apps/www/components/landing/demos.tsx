@@ -54,36 +54,18 @@ export function SwitchDemo() {
   const report = useCellStatus()
   const [on, setOn] = useState(true)
   const [pending, setPending] = useState(false)
-  const [failed, setFailed] = useState(false)
-  const attempt = useRef(0)
   async function change(next: boolean) {
-    attempt.current += 1
-    setFailed(false)
     setOn(next)
     setPending(true)
     report("loading")
     await wait(1100)
     setPending(false)
-    // Only the very first change fails, to show the failed state once.
-    if (attempt.current === 1) {
-      setOn(!next)
-      setFailed(true)
-      report("error")
-      return
-    }
     report("success")
   }
   return (
-    <Field
-      orientation="horizontal"
-      invalid={failed}
-      className="w-fit flex-wrap justify-center"
-    >
+    <Field orientation="horizontal" className="w-fit justify-center">
       <Switch checked={on} pending={pending} onCheckedChange={change} />
       <FieldLabel>Weekly summary</FieldLabel>
-      <FieldError match={failed} className="w-full text-center">
-        Could not save. Try again.
-      </FieldError>
     </Field>
   )
 }

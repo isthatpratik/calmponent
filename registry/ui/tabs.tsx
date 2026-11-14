@@ -20,12 +20,13 @@ function Tabs({
 }
 
 const tabsListVariants = cva(
-  "group/tabs-list relative inline-flex w-fit items-center text-muted-foreground",
+  // On narrow screens the list scrolls sideways instead of overflowing the page.
+  "group/tabs-list relative inline-flex w-fit max-w-full items-center overflow-x-auto text-muted-foreground [scrollbar-width:none]",
   {
     variants: {
       variant: {
         default: "gap-1 rounded-lg bg-muted p-1",
-        line: "gap-4 border-border border-b",
+        line: "gap-4 shadow-[inset_0_-1px_0_var(--border)]",
       },
     },
     defaultVariants: { variant: "default" },
@@ -57,7 +58,7 @@ function TabsList({
           "absolute left-0 w-(--active-tab-width) translate-x-(--active-tab-left)",
           "transition-[translate,width] duration-300 ease-snap motion-reduce:transition-none",
           variant === "line"
-            ? "-bottom-px h-px bg-foreground"
+            ? "bottom-0 h-px bg-foreground"
             : "top-1/2 h-[calc(100%-0.5rem)] -translate-y-1/2 rounded-md bg-background shadow-[0_1px_2px_rgb(0_0_0/0.2),0_0_0_1px_var(--border)]",
         )}
       />
@@ -75,7 +76,7 @@ function TabsTrigger({
       className={cn(
         "button-sm relative z-10 inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md px-3 py-1.5 outline-none",
         "transition-colors duration-200 ease-calm hover:text-foreground",
-        "focus-visible:ring-2 focus-visible:ring-ring",
+        "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
         "data-[active]:text-foreground",
         "group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:px-0 group-data-[variant=line]/tabs-list:pb-2.5",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",

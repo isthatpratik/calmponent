@@ -60,10 +60,19 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
+  ol: ({ className, ...props }) => (
+    <ol
+      className={cn(
+        "body-3 list-decimal space-y-2 pl-6 text-muted-foreground marker:text-muted-foreground",
+        className,
+      )}
+      {...props}
+    />
+  ),
   code: ({ className, ...props }) => (
     <code
       className={cn(
-        "rounded-md bg-background px-1.5 py-0.5 font-mono text-foreground text-sm shadow-[inset_0_0_0_1px_var(--border)]",
+        "rounded-md bg-background px-1.5 py-0.5 font-mono text-foreground text-sm wrap-break-word shadow-[inset_0_0_0_1px_var(--border)]",
         className,
       )}
       {...props}

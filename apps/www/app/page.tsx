@@ -87,7 +87,7 @@ export default function HomePage() {
             built on Base UI. Loading, success, error, and empty states are
             already done.
           </p>
-          <div className="flex flex-col items-center gap-3 sm:flex-row">
+          <div className="flex w-full max-w-md flex-col items-center gap-3 sm:w-auto sm:max-w-none sm:flex-row">
             <Button
               size="lg"
               nativeButton={false}
@@ -118,7 +118,7 @@ export default function HomePage() {
             </GridCell>
             <GridCell
               title="Switch"
-              description="Pending while it saves. Only the first change fails, on purpose."
+              description="Moves at once, then pending while it saves."
             >
               <SwitchDemo />
             </GridCell>

@@ -1,14 +1,38 @@
 ---
 title: Installation
-description: Add Calmponent items to your project with the shadcn CLI.
+description: Add Calmponent components to your project with the shadcn CLI, in your own theme.
 ---
 
 Calmponent works with the shadcn CLI. You need React 19 and Tailwind CSS 4.
 
-Add the `cn()` helper, which every Calmponent component uses:
+## Add a component
 
-<InstallCommand item="isthatpratik/calmponent/utils" />
+Add any component by name. The CLI also adds what it needs: the `cn()` helper, the shared tokens, and other Calmponent parts.
 
-To pin a release, add a tag, for example `isthatpratik/calmponent/utils#v0.0.1`.
+<InstallCommand item="isthatpratik/calmponent/button" />
 
-The shorter `@calmponent/utils` form comes later, when the docs site is hosted.
+To pin a release, add a tag, for example `isthatpratik/calmponent/button#v0.1.0`.
+
+The shorter `@calmponent/button` form comes later, when the docs site is hosted.
+
+## Use your own theme
+
+Calmponent components read the standard shadcn/ui CSS variables: `--primary`, `--background`, `--border`, `--input`, `--ring`, `--radius`, and the others. So any shadcn/ui theme also themes Calmponent, including a preset from [shadcn/create](https://ui.shadcn.com/create).
+
+1. Create your project with a preset:
+
+   ```bash
+   npx shadcn@latest init --preset <code>
+   ```
+
+2. Add Calmponent components as usual. Your colors, radius, and font stay.
+
+The `tokens` item that comes with each component adds only what shadcn/ui does not have: `--success` and `--warning`, the motion curves (`ease-calm`, `ease-snap`, `ease-pop`, `ease-fade`), and the text styles (`heading-1`, `body-4`, and so on). It does not change your theme colors.
+
+Things to know:
+
+- A Calmponent component replaces a shadcn/ui component with the same name, for example `button`. The CLI asks before it overwrites a file.
+- shadcn/ui styles such as Nova or Lyra change the spacing of shadcn/ui components. Calmponent components keep their own spacing.
+- Calmponent's own theme passes WCAG AA, and input borders and focus rings reach 3:1. Some themes use lighter borders. If you change `--input` or `--ring`, check them against your background.
+
+We tested this with the preset `a1Dg5eFl` (Mira, zinc, teal, small radius) in a new Vite project. After we added eight Calmponent components, the preset's colors, radius, and font were unchanged. With the preset's variables, the components showed the teal primary and the smaller radius.

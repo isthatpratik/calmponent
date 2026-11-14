@@ -26,6 +26,7 @@ Rules:
 | D12 | v1 scope | Which 20 to 25 components and which blocks ship first? | Accepted: 24 components in 3 releases. See [0010](0010-v1-scope.md). | accepted |
 | D13 | Code reuse | What do we copy from shadcn/ui or other projects? What notice must we keep? | Accepted: write from scratch, reference only. See [0003](0003-code-reuse.md). | accepted |
 | D14 | Hosting and domain | Where does the site run? Which domain? | Free Vercel subdomain first. A domain costs money, so the user decides. | open |
+| D15 | Create page | Should Calmponent have a `/create` theme builder like shadcn/create? | Not before D14. shadcn/create already themes Calmponent (tested, see Installation). Build it only if it previews every state and motion and ends in one `npx shadcn add .../r/theme/<code>.json` command, which needs a hosted route. Keep the Customize panel meanwhile. | open |
 
 ## Accepted
 
