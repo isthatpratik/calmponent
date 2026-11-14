@@ -9,7 +9,7 @@ import { Textarea } from "@calmponent/registry/ui/textarea"
 
 export function TextareaDemo() {
   return (
-    <div className="rounded-xl border border-border bg-card p-6">
+    <div className="well p-6">
       <Field className="max-w-md">
         <FieldLabel>Bio</FieldLabel>
         <Textarea
@@ -69,7 +69,10 @@ export function TextareaStates() {
   return (
     <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
       {states.map((state) => (
-        <div key={state.label} className="flex flex-col gap-2 bg-card p-4">
+        <div
+          key={state.label}
+          className="flex flex-col gap-2 bg-background p-4"
+        >
           <span className="caption-3 text-muted-foreground">{state.label}</span>
           {state.node}
         </div>

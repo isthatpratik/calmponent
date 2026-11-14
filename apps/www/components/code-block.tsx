@@ -17,7 +17,7 @@ export function CodeBlock({
       <pre
         ref={ref}
         className={cn(
-          "overflow-x-auto rounded-xl border border-border bg-card p-4 pr-12 font-mono text-sm",
+          "well overflow-x-auto p-4 pr-12 font-mono text-sm",
           "[&_code]:bg-transparent [&_code]:p-0 [&_code]:text-sm",
           className,
         )}

@@ -21,7 +21,10 @@ function Grid({ states }: { states: { label: string; node: ReactNode }[] }) {
   return (
     <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
       {states.map((state) => (
-        <div key={state.label} className="flex flex-col gap-3 bg-card p-4">
+        <div
+          key={state.label}
+          className="flex flex-col gap-3 bg-background p-4"
+        >
           <span className="caption-3 text-muted-foreground">{state.label}</span>
           {state.node}
         </div>
@@ -37,7 +40,7 @@ export function CheckboxDemo() {
   const all = checked.length === items.length
   const some = checked.length > 0 && !all
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-border bg-card p-6">
+    <div className="flex flex-col gap-3 well p-6">
       <Field orientation="horizontal" className="w-fit">
         <Checkbox
           checked={all}
@@ -126,7 +129,7 @@ export function CheckboxStates() {
 
 export function RadioDemo() {
   return (
-    <div className="rounded-xl border border-border bg-card p-6">
+    <div className="well p-6">
       <RadioGroup defaultValue="team" aria-label="Plan">
         {[
           ["free", "Free", "For one person."],
@@ -206,7 +209,7 @@ export function SwitchDemo() {
   }
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6">
+    <div className="well p-6">
       <Field
         orientation="horizontal"
         invalid={error}

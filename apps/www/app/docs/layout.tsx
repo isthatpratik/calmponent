@@ -1,53 +1,67 @@
 import type { Node } from "fumadocs-core/page-tree"
-import Link from "next/link"
 import type { ReactNode } from "react"
 import { NavLink } from "@/components/nav-link"
+import { SiteHeader } from "@/components/site-header"
 import { source } from "@/lib/source"
 
-function TreeNodes({ nodes }: { nodes: Node[] }) {
+function Section({ label, nodes }: { label: string; nodes: Node[] }) {
+  const pages = nodes.filter((node) => node.type === "page")
   return (
-    <ul className="space-y-1">
-      {nodes.map((node) => {
-        if (node.type === "page") {
-          return (
+    <div className="flex flex-col gap-1">
+      <div className="flex items-center justify-between pr-2 pb-1 pl-3">
+        <span className="caption-3 text-muted-foreground uppercase tracking-wider">
+          {label}
+        </span>
+        <span className="caption-5 text-muted-foreground tabular-nums">
+          {pages.length}
+        </span>
+      </div>
+      <ul className="flex flex-col">
+        {pages.map((node) =>
+          node.type === "page" ? (
             <li key={node.url}>
               <NavLink href={node.url}>{node.name}</NavLink>
             </li>
-          )
-        }
-        if (node.type === "folder") {
-          return (
-            <li key={node.$id ?? String(node.name)} className="pt-2">
-              <span className="title-4">{node.name}</span>
-              <div className="pl-3">
-                <TreeNodes nodes={node.children} />
-              </div>
-            </li>
-          )
-        }
-        return (
-          <li
-            key={node.$id ?? String(node.name)}
-            className="caption-3 pt-4 text-muted-foreground"
-          >
-            {node.name}
-          </li>
-        )
-      })}
-    </ul>
+          ) : null,
+        )}
+      </ul>
+    </div>
   )
 }
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
+  const tree = source.pageTree.children
+  const start = tree.filter((node) => node.type === "page")
+  const folders = tree.filter((node) => node.type === "folder")
+
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-12 md:flex-row md:gap-12">
-      <nav aria-label="Docs" className="body-6 w-full shrink-0 md:w-48">
-        <Link href="/" className="title-3 mb-6 block">
-          Calmponent
-        </Link>
-        <TreeNodes nodes={source.pageTree.children} />
-      </nav>
-      <main className="min-w-0 flex-1">{children}</main>
-    </div>
+    <>
+      <SiteHeader />
+      <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-4 pb-4 sm:px-6 md:flex-row md:gap-6">
+        <aside
+          aria-label="Docs"
+          className="md:sticky md:top-14 md:h-[calc(100dvh-3.5rem)] md:w-56 md:shrink-0 md:overflow-y-auto"
+        >
+          <nav className="flex flex-col gap-8 py-6 md:py-8">
+            <Section label="Get started" nodes={start} />
+            {folders.map((folder) =>
+              folder.type === "folder" ? (
+                <Section
+                  key={folder.$id ?? String(folder.name)}
+                  label={String(folder.name)}
+                  nodes={folder.children}
+                />
+              ) : null,
+            )}
+          </nav>
+        </aside>
+        <main
+          id="content"
+          className="min-w-0 flex-1 rounded-2xl bg-card shadow-[0_1px_2px_rgb(0_0_0/0.4),inset_0_1px_0_rgb(255_255_255/0.04),0_0_0_1px_var(--border)] md:mt-4"
+        >
+          {children}
+        </main>
+      </div>
+    </>
   )
 }

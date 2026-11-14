@@ -45,7 +45,7 @@ export function InstallCommand({ item }: { item: string }) {
     <Tabs.Root
       value={manager}
       onValueChange={(value) => write(value as Manager)}
-      className="overflow-hidden rounded-xl border border-border bg-card"
+      className="well overflow-hidden"
     >
       <div className="flex items-center justify-between border-border border-b px-2">
         <Tabs.List

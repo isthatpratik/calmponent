@@ -63,14 +63,14 @@ export const mdxComponents: MDXComponents = {
   code: ({ className, ...props }) => (
     <code
       className={cn(
-        "rounded-md bg-muted px-1.5 py-0.5 font-mono text-foreground text-sm",
+        "rounded-md bg-background px-1.5 py-0.5 font-mono text-foreground text-sm shadow-[inset_0_0_0_1px_var(--border)]",
         className,
       )}
       {...props}
     />
   ),
   table: ({ className, ...props }) => (
-    <div className="overflow-x-auto rounded-xl border border-border">
+    <div className="well overflow-x-auto">
       <table
         className={cn("body-6 w-full border-collapse", className)}
         {...props}
@@ -80,7 +80,7 @@ export const mdxComponents: MDXComponents = {
   th: ({ className, ...props }) => (
     <th
       className={cn(
-        "caption-3 border-border border-b bg-card px-4 py-2.5 text-left text-muted-foreground",
+        "caption-3 border-border border-b px-4 py-2.5 text-left text-muted-foreground",
         className,
       )}
       {...props}

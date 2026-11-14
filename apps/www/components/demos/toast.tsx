@@ -30,7 +30,7 @@ export function ToastDemo() {
   }
 
   return (
-    <div className="flex flex-wrap gap-3 rounded-xl border border-border bg-card p-6">
+    <div className="flex flex-wrap gap-3 well p-6">
       <Button variant="outline" onClick={() => toast("Invite sent to Ada")}>
         Default
       </Button>
