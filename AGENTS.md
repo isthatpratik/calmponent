@@ -6,7 +6,7 @@ This file gives the rules for AI coding agents that work in this repository.
 
 Calmponent is a shadcn/ui-compatible component library. Every component has every state, every motion has a reason, and people and AI agents can use it correctly. Read [`docs/purpose.md`](docs/purpose.md) before you start.
 
-Current phase: **planning**. The workspace exists (pnpm, Turborepo, Biome), but there are no components yet. The open decisions are in [`docs/decisions/README.md`](docs/decisions/README.md). Do not write code that depends on an open decision.
+Current phase: **v0.1.0 released (forms core)**. Next: the site (milestone "Site and docs") and v0.2.0 (overlays and menus). The open decisions are in [`docs/decisions/README.md`](docs/decisions/README.md). Do not write code that depends on an open decision.
 
 ## How to work
 
