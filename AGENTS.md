@@ -18,7 +18,7 @@ Current phase: **planning**. The workspace exists (pnpm, Turborepo, Biome), but 
 
 ## Design work
 
-- Load the design skills before you choose sections, copy, fonts, spacing, radius, colors, icons, or motion: `landing-page-design` for pages and components, and `stageshow` for any motion, demo, or faux UI.
+- Follow the design system in [ADR 0009](docs/decisions/0009-design-system.md) for type, color, radius, and motion.
 - Motion rules: every motion has a cause, parts stay mounted and move instead of popping, and loops end where they began.
 - The user's taste: full monochrome (black, white, grays) is preferred over a single brand accent. A single accent color on monochrome "still feels AI" to them. Color is for status only. References they like: polar.sh, primora.xyz, unkey.com, dovetail.com, cardcn.dev.
 - Avoid the generic "premium dark" gallery look that most component sites use.
