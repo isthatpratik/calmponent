@@ -7,7 +7,7 @@ export function TableOfContents({ items }: { items: TOCItemType[] }) {
   if (items.length === 0) return null
   return (
     <AnchorProvider toc={items} single>
-      <nav aria-label="On this page" className="sticky top-12">
+      <nav aria-label="On this page" className="sticky top-24">
         <p className="caption-3 mb-3 text-muted-foreground">On this page</p>
         <ul className="body-6 space-y-2 border-border border-l">
           {items.map((item) => (

@@ -1,6 +1,7 @@
 import { getBreadcrumbItems } from "fumadocs-core/breadcrumb"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { JsonLd } from "@/components/json-ld"
 import { mdxComponents } from "@/components/mdx"
 import { PageActions } from "@/components/page-actions"
 import {
@@ -9,6 +10,7 @@ import {
 } from "@/components/preview-state"
 import { TableOfContents } from "@/components/toc"
 import { toPlainMarkdown } from "@/lib/markdown"
+import { siteUrl } from "@/lib/site"
 import { source } from "@/lib/source"
 
 export const dynamicParams = false
@@ -23,9 +25,27 @@ export async function generateMetadata(
   const { slug } = await props.params
   const page = source.getPage(slug)
   if (!page) notFound()
+  const title = page.url.startsWith("/docs/components/")
+    ? `${page.data.title}: React component for shadcn/ui`
+    : page.data.title
+  const image = `/og${page.url}`
   return {
-    title: page.data.title,
+    title,
     description: page.data.description,
+    alternates: { canonical: page.url },
+    openGraph: {
+      title,
+      description: page.data.description,
+      url: page.url,
+      type: "article",
+      images: [{ url: image, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: page.data.description,
+      images: [image],
+    },
   }
 }
 
@@ -82,6 +102,41 @@ export default async function DocPage(props: PageProps<"/docs/[[...slug]]">) {
         <aside className="hidden w-48 shrink-0 xl:block">
           <TableOfContents items={page.data.toc} />
         </aside>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "TechArticle",
+                headline: page.data.title,
+                description: page.data.description,
+                url: `${siteUrl}${page.url}`,
+                author: { "@type": "Person", name: "Pratik Desai" },
+                isPartOf: {
+                  "@type": "WebSite",
+                  name: "Calmponent",
+                  url: siteUrl,
+                },
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { name: "Docs", url: `${siteUrl}/docs` },
+                  ...crumbs.map((crumb) => ({
+                    name: String(crumb.name),
+                    url: crumb.url ? `${siteUrl}${crumb.url}` : undefined,
+                  })),
+                  { name: page.data.title, url: `${siteUrl}${page.url}` },
+                ].map((item, index) => ({
+                  "@type": "ListItem",
+                  position: index + 1,
+                  name: item.name,
+                  item: item.url,
+                })),
+              },
+            ],
+          }}
+        />
       </div>
     </PreviewStateProvider>
   )

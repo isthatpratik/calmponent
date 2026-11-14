@@ -1,5 +1,6 @@
 import { Button } from "@calmponent/registry/ui/button"
 import Link from "next/link"
+import { JsonLd } from "@/components/json-ld"
 import {
   ChecklistDemo,
   RunDemo,
@@ -13,6 +14,34 @@ import { GridCell } from "@/components/landing/status-grid"
 import { Tagline } from "@/components/landing/tagline"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
+import { site, siteUrl } from "@/lib/site"
+
+const faq = [
+  {
+    q: "What is Calmponent?",
+    a: "Calmponent is an open-source React UI library for shadcn/ui and Tailwind CSS. Each component ships with its loading, success, error, empty, and disabled states already designed, and motion that only runs when something changes.",
+  },
+  {
+    q: "Does it work with shadcn/ui?",
+    a: "Yes. Components keep the shadcn/ui names, install with the shadcn CLI, and read your existing theme variables, so you can swap them in one at a time.",
+  },
+  {
+    q: "Which frameworks does it support?",
+    a: "It is built for React 19 and Tailwind CSS 4, and works wherever the shadcn CLI works, including Next.js and Vite.",
+  },
+  {
+    q: "Are the components accessible?",
+    a: "Yes. They are built on Base UI, with keyboard support, visible focus, screen reader announcements for state changes, and color contrast that passes WCAG AA in light and dark mode.",
+  },
+  {
+    q: "Is Calmponent free?",
+    a: "Yes. It is MIT licensed. You copy the code into your project and own every line.",
+  },
+  {
+    q: "Can AI coding agents use it?",
+    a: "Yes. Every docs page is available as Markdown, the site publishes llms.txt and llms-full.txt, and pages can be copied or opened in an assistant with one click.",
+  },
+]
 
 const features = [
   {
@@ -49,13 +78,14 @@ export default function HomePage() {
             Forms core is out
           </Link>
           <h1 className="heading-3 max-w-[680px] text-balance bg-linear-to-r from-foreground to-foreground/60 bg-clip-text text-transparent sm:heading-1">
-            Finished components
+            The React UI library
             <br />
-            for shadcn/ui
+            with every state built in
           </h1>
           <p className="body-3 max-w-[560px] text-pretty text-muted-foreground">
-            Every state designed, every motion with a reason. Add them with the
-            shadcn CLI and own every line.
+            Accessible, animated components for shadcn/ui and Tailwind CSS,
+            built on Base UI. Loading, success, error, and empty states are
+            already done.
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row">
             <Button
@@ -68,7 +98,7 @@ export default function HomePage() {
             <InstallChip command="npx shadcn@latest add isthatpratik/calmponent/form" />
           </div>
           <p className="caption-2 text-muted-foreground">
-            13 components · built on Base UI · MIT licensed
+            14 components · built on Base UI · MIT licensed
           </p>
         </section>
 
@@ -152,6 +182,30 @@ export default function HomePage() {
           ))}
         </section>
 
+        <section
+          aria-labelledby="faq"
+          className="mx-auto grid max-w-[1200px] gap-12 px-6 pb-32 lg:grid-cols-[1fr_2fr]"
+        >
+          <div className="flex flex-col gap-3">
+            <h2 id="faq" className="heading-5 text-foreground">
+              Questions
+            </h2>
+            <p className="body-6 max-w-72 text-pretty text-muted-foreground">
+              Something else? Open an issue on GitHub.
+            </p>
+          </div>
+          <dl className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+            {faq.map((item) => (
+              <div key={item.q} className="flex flex-col gap-2">
+                <dt className="title-3 text-foreground">{item.q}</dt>
+                <dd className="body-6 text-pretty text-muted-foreground">
+                  {item.a}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
         <section className="mx-auto flex max-w-[1200px] flex-col items-center gap-6 px-6 pb-32 text-center">
           <h2 className="heading-4 max-w-[680px] text-balance text-foreground">
             Start with one component
@@ -170,6 +224,36 @@ export default function HomePage() {
         </section>
       </main>
       <SiteFooter />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              name: site.name,
+              url: siteUrl,
+              description: site.description,
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              name: site.name,
+              description: site.description,
+              codeRepository: site.repo,
+              programmingLanguage: ["TypeScript", "React"],
+              license: "https://opensource.org/licenses/MIT",
+              keywords: site.keywords.join(", "),
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: faq.map((item) => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: { "@type": "Answer", text: item.a },
+              })),
+            },
+          ],
+        }}
+      />
     </>
   )
 }

@@ -1,8 +1,9 @@
 import { Toaster } from "@calmponent/registry/ui/toast"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import type { ReactNode } from "react"
 import { themeScript } from "@/components/theme-toggle"
+import { site, siteUrl } from "@/lib/site"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -16,12 +17,37 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Calmponent",
+    default: site.title,
     template: "%s | Calmponent",
   },
-  description:
-    "Finished components for shadcn/ui. Every state designed, every motion with a reason.",
+  description: site.description,
+  keywords: site.keywords,
+  applicationName: site.name,
+  authors: [{ name: "Pratik Desai", url: "https://github.com/isthatpratik" }],
+  creator: "Pratik Desai",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
+  robots: { index: true, follow: true },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

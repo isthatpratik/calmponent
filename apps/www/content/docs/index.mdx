@@ -1,8 +1,22 @@
 ---
 title: Introduction
-description: What Calmponent is, and what it is not.
+description: Calmponent is an open-source React UI library for shadcn/ui and Tailwind CSS, with every state built in.
 ---
 
-Calmponent gives you finished components for shadcn/ui. Every state is designed, and every motion has a reason.
+Calmponent is a React UI library of accessible, animated components for shadcn/ui and Tailwind CSS, built on Base UI. Each component ships with its loading, success, error, empty, and disabled states already designed.
 
-Calmponent is in the planning phase. There are no components yet.
+## Why it exists
+
+Most component libraries give you the happy path. Teams then rebuild the same states again and again: a button that shows it is saving, a field that explains its error, a list that says it is empty. AI coding agents make this worse, because they usually generate only the happy path too. Calmponent does those states once, carefully.
+
+## Principles
+
+- **Every state, built in.** Loading, success, error, empty, and disabled are part of the component.
+- **Motion with a cause.** Things move when something changed, then rest. Reduced motion is respected everywhere.
+- **Same names as shadcn/ui.** Components install with the shadcn CLI and read your theme, so you can swap them in one at a time.
+- **Accessible by default.** Keyboard, focus, screen reader announcements, and contrast that passes WCAG AA.
+- **Ready for AI agents.** Every page is available as Markdown, with `llms.txt` and `llms-full.txt`.
+
+## Start
+
+Read the [installation guide](/docs/installation), or open a component such as [Button](/docs/components/button) or [Form](/docs/components/form).
