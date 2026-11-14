@@ -75,3 +75,10 @@ Phosphor (`@phosphor-icons/react`). Not Lucide, not Material.
 - WCAG 2.2: 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast.
 - [shadcn/ui theming](https://ui.shadcn.com/docs/theming): the CSS variable names and the multiplied radius scale.
 - [Tailwind CSS theme variables](https://tailwindcss.com/docs/theme): `--ease-*` creates `ease-*` utilities; there is no duration namespace.
+
+## Update, 2026-11-14: Geist alignment and code colors
+
+- Text is `#171717` (light) and `#ededed` (dark), and the status colors are the Geist step-900 text colors: success `#297a3a` / `#62c073`, warning `#a35200` / `#f2a20d`, destructive `#cb2a2f` / `#ff6166`. Status is still text and borders only, never a fill.
+- Code blocks use syntax colors, at the owner's request. This is the only exception to "color only for status". The themes use the Geist step-900 colors and pass 4.5:1. See `apps/www/lib/code-themes.ts` and `DESIGN.md`.
+- Considered and not adopted from Geist: a blue focus ring (Calmponent keeps a monochrome ring), a 6px base radius (8px stays), and 13px code text (it is off the Tailwind type scale).
+

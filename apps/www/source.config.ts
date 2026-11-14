@@ -1,4 +1,5 @@
 import { defineConfig, defineDocs } from "fumadocs-mdx/config"
+import { codeThemes } from "./lib/code-themes"
 
 export const docs = defineDocs({
   dir: "content/docs",
@@ -8,4 +9,9 @@ export const docs = defineDocs({
   },
 })
 
-export default defineConfig()
+export default defineConfig({
+  mdxOptions: {
+    // Vercel-style syntax colors, shared with the Example code tabs.
+    rehypeCodeOptions: { themes: codeThemes },
+  },
+})

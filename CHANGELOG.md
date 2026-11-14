@@ -4,6 +4,10 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- Brand: a new mark. The rounded square opens into a "C" for Calmponent, and the dot inside is its status light. Favicon, Apple touch icon, OG images, and the downloadable files all use it.
+- Tokens: softer text (`#171717` light, `#ededed` dark) and status colors from the Geist scale (success `#297a3a` / `#62c073`, warning `#a35200` / `#f2a20d`, destructive `#cb2a2f` / `#ff6166`). All pass the contrast check.
+- Docs: colored code, in light and dark, on the Geist step-900 colors. Example code is highlighted on the server with the same themes.
+- Docs: the Customize panel adds a base gray (neutral, zinc, stone, slate), violet and teal accents, icon stroke (thin, regular, bold), and four more typefaces.
 - `toast`: `toast.promise` no longer leaves a failed promise unhandled. The error toast is the handling; code that awaits the promise still gets the rejection.
 - Brand: the mark on a 24-unit grid, an SVG favicon that follows the browser theme, an Apple touch icon, downloadable mark files, a Brand docs page, and `DESIGN.md` with the design system in one place.
 - SEO and AEO: Calmponent is now described as an open-source React UI library for shadcn/ui and Tailwind CSS. Page titles, descriptions, canonical URLs, Open Graph and Twitter cards, generated OG images for the home page and every docs page, `sitemap.xml`, `robots.txt`, structured data (WebSite, SoftwareSourceCode, FAQPage, TechArticle, BreadcrumbList), and a landing FAQ.

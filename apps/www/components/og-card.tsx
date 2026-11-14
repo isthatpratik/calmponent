@@ -1,3 +1,5 @@
+import { markDot, markPath } from "@/lib/mark"
+
 /**
  * The Open Graph card, drawn by next/og: black, the mark and wordmark, a
  * dashed rule with status dots, the title, and the description.
@@ -33,26 +35,21 @@ export function OgCard({
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <div
-          style={{
-            width: 40,
-            height: 40,
-            borderRadius: 10,
-            border: "3px solid #fafafa",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+        <svg
+          width="44"
+          height="44"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
         >
-          <div
-            style={{
-              width: 12,
-              height: 12,
-              borderRadius: 999,
-              background: "#fafafa",
-            }}
+          <path
+            d={markPath}
+            stroke="#fafafa"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
-        </div>
+          <circle {...markDot} fill="#fafafa" />
+        </svg>
         <div style={{ fontSize: 32, fontWeight: 600 }}>Calmponent</div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -89,7 +86,7 @@ export function OgCard({
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-        <div style={dot("#4ade80")} />
+        <div style={dot("#62c073")} />
         <div style={{ flex: 1, borderTop: "2px dashed #313131" }} />
         <div style={dot("#525252")} />
         <div style={{ flex: 1, borderTop: "2px dashed #313131" }} />

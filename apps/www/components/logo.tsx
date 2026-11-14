@@ -1,9 +1,7 @@
 import Link from "next/link"
+import { markDot, markPath } from "@/lib/mark"
 
-/**
- * The Calmponent mark on a 24-unit grid: a rounded square (radius 5,
- * stroke 2) and its status light (radius 2.5). A component and its state.
- */
+/** The Calmponent mark: an open square (a "C") and its status light. */
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg
@@ -12,19 +10,14 @@ export function LogoMark({ className }: { className?: string }) {
       fill="none"
       className={className}
     >
-      <rect
-        x="3"
-        y="3"
-        width="18"
-        height="18"
-        rx="5"
+      <path
+        d={markPath}
         stroke="currentColor"
         strokeWidth="2"
+        strokeLinecap="round"
       />
       <circle
-        cx="12"
-        cy="12"
-        r="2.5"
+        {...markDot}
         fill="currentColor"
         className="origin-center transition-[scale] duration-300 ease-pop group-hover/logo:scale-125 motion-reduce:transition-none"
       />

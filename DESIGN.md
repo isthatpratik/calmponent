@@ -17,16 +17,38 @@ The rules every Calmponent component and page follows. The full reasoning is in 
 | `--background` | `#ffffff` | `#000000` | Page |
 | `--card` | `#ffffff` | `#181818` | Panels, cards |
 | `--muted` | `#f5f5f5` | `#1f1f1f` | Quiet surfaces |
-| `--foreground` | `#0a0a0a` | `#fafafa` | Text |
+| `--foreground` | `#171717` | `#ededed` | Text |
 | `--muted-foreground` | `#666666` | `#a3a3a3` | Secondary text |
 | `--border` | `#e5e5e5` | `#272727` | Decorative lines |
 | `--input` | `#858585` | `#6b6b6b` | Control borders (3:1) |
 | `--ring` | `#737373` | `#737373` | Focus rings (3:1) |
-| `--success` | `#15803d` | `#4ade80` | Status only |
-| `--warning` | `#b45309` | `#fbbf24` | Status only |
-| `--destructive` | `#b91c1c` | `#f87171` | Status only |
+| `--success` | `#297a3a` | `#62c073` | Status only |
+| `--warning` | `#a35200` | `#f2a20d` | Status only |
+| `--destructive` | `#cb2a2f` | `#ff6166` | Status only |
+
+Text is a soft near-black and near-white (`#171717` and `#ededed`), not pure black and white. This lowers glare and follows the Geist gray scale. The status colors are the Geist step-900 text colors.
 
 `pnpm check:contrast` checks 52 pairs in CI. A new color must pass it.
+
+### Code
+
+Code is the one place where color is not only for status. Syntax colors make code faster to scan. The themes are in [`apps/www/lib/code-themes.ts`](apps/www/lib/code-themes.ts) and use the Geist step-900 colors:
+
+| Token | Light | Dark |
+|---|---|---|
+| Keyword | `#bd2864` | `#f75f8f` |
+| String | `#297a3a` | `#62c073` |
+| Function, attribute | `#7820bc` | `#bf7af0` |
+| Variable, tag | `#0068d6` | `#52a8ff` |
+| Type, number, import | `#a35200` | `#f2a20d` |
+| Comment | `#4d4d4d` | `#a1a1a1` |
+| Punctuation, property | `#171717` | `#ededed` |
+
+Every syntax color passes 4.5:1 on the code surfaces.
+
+## Mark
+
+A rounded square that opens on the right into a "C", with a dot inside as its status light: Calmponent, a component, and its state. 24-unit grid, 18-unit square, radius 5, stroke 2 with round caps, dot radius 2.5. One color only. The geometry lives in [`apps/www/lib/mark.ts`](apps/www/lib/mark.ts).
 
 ## Type
 

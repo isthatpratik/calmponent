@@ -17,6 +17,8 @@ import {
   type Accent,
   accents,
   applyLook,
+  type Base,
+  baseLabels,
   decodeLook,
   defaultLook,
   encodeLook,
@@ -25,7 +27,9 @@ import {
   isDefault,
   type Look,
   radiusStops,
+  type Stroke,
   storageKey,
+  strokes,
   tokensFor,
 } from "@/lib/customize"
 import { cn } from "@/lib/utils"
@@ -45,6 +49,42 @@ function Sliders() {
       <circle cx="16" cy="7" r="2" />
       <circle cx="8" cy="17" r="2" />
     </svg>
+  )
+}
+
+function Segmented<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string
+  value: T
+  options: { value: T; label: string }[]
+  onChange: (value: T) => void
+}) {
+  return (
+    <fieldset className="flex flex-col gap-3">
+      <legend className="title-4 mb-3">{label}</legend>
+      <div
+        className="grid gap-1 rounded-lg bg-background p-1 shadow-[inset_0_0_0_1px_var(--border)]"
+        style={{
+          gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
+        }}
+      >
+        {options.map((option) => (
+          <button
+            key={option.value}
+            type="button"
+            aria-pressed={value === option.value}
+            onClick={() => onChange(option.value)}
+            className="caption-1 h-7 cursor-pointer rounded-md text-muted-foreground outline-none transition-colors duration-200 ease-calm hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring aria-pressed:bg-muted aria-pressed:text-foreground"
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </fieldset>
   )
 }
 
@@ -119,34 +159,43 @@ export function Customizer() {
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Positioner sideOffset={8} align="end" className="z-50">
-          <Popover.Popup className="w-80 origin-(--transform-origin) rounded-2xl border border-border bg-popover p-5 text-popover-foreground shadow-xl outline-none transition-[opacity,scale] duration-200 ease-calm data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 motion-reduce:data-[ending-style]:scale-100 motion-reduce:data-[starting-style]:scale-100">
+          <Popover.Popup className="max-h-(--available-height) w-80 origin-(--transform-origin) overflow-y-auto rounded-2xl border border-border bg-popover p-5 text-popover-foreground shadow-xl outline-none transition-[opacity,scale] duration-200 ease-calm data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 motion-reduce:data-[ending-style]:scale-100 motion-reduce:data-[starting-style]:scale-100">
             <Popover.Title className="sr-only">
               Customize the preview
             </Popover.Title>
             <div className="flex flex-col gap-6">
+              <Segmented
+                label="Base"
+                value={look.base}
+                options={(Object.keys(baseLabels) as Base[]).map((value) => ({
+                  value,
+                  label: baseLabels[value],
+                }))}
+                onChange={(base) => update({ base })}
+              />
+
               <fieldset className="flex flex-col gap-3">
                 <legend className="title-4 mb-3">Accent</legend>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-5 gap-2">
                   {(Object.keys(accents) as Accent[]).map((value) => (
                     <button
                       key={value}
                       type="button"
                       aria-pressed={look.accent === value}
                       onClick={() => update({ accent: value })}
+                      aria-label={accents[value].label}
+                      title={accents[value].label}
                       className={cn(
-                        "caption-1 flex h-9 cursor-pointer items-center justify-center gap-2 rounded-lg px-2 text-muted-foreground outline-none",
+                        "caption-1 flex h-9 cursor-pointer items-center justify-center rounded-lg text-muted-foreground outline-none",
                         "shadow-[inset_0_0_0_1px_var(--border)] transition-[box-shadow,color] duration-200 ease-calm hover:text-foreground",
                         "focus-visible:ring-2 focus-visible:ring-ring aria-pressed:text-foreground aria-pressed:shadow-[inset_0_0_0_1.5px_var(--foreground)]",
                       )}
                     >
                       <span
                         aria-hidden="true"
-                        className="size-3 shrink-0 rounded-full"
+                        className="size-4 shrink-0 rounded-full"
                         style={{ background: accents[value].swatch }}
                       />
-                      {accents[value].label === "Monochrome"
-                        ? "Mono"
-                        : accents[value].label}
                     </button>
                   ))}
                 </div>
@@ -187,6 +236,16 @@ export function Customizer() {
                 </div>
               </div>
 
+              <Segmented
+                label="Icons"
+                value={look.stroke}
+                options={(Object.keys(strokes) as Stroke[]).map((value) => ({
+                  value,
+                  label: strokes[value].label,
+                }))}
+                onChange={(stroke) => update({ stroke })}
+              />
+
               <div className="flex items-center justify-between gap-4">
                 <span id="font-label" className="title-4">
                   Typeface
@@ -199,7 +258,7 @@ export function Customizer() {
                   <SelectTrigger
                     aria-labelledby="font-label"
                     size="sm"
-                    className="w-36"
+                    className="w-40"
                   >
                     <SelectValue />
                   </SelectTrigger>
