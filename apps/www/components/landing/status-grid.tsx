@@ -24,13 +24,16 @@ function Dot({
       aria-hidden="true"
       className={cn(
         // The background ring cuts a small gap into the dashed lines.
+        // Centred on the 1px line: half a pixel outside the padding edge.
         "absolute z-10 size-1.5 rounded-full shadow-[0_0_0_5px_var(--background)]",
         "transition-[background-color,scale] duration-500 ease-calm",
         status === "loading" &&
           "animate-pulse bg-foreground motion-reduce:animate-none",
         status === "success" && "scale-125 bg-success",
         status === "error" && "scale-125 bg-destructive",
-        (!status || status === "idle") && "bg-foreground/30",
+        // Opaque, so the corner where the lines meet never shows through.
+        (!status || status === "idle") &&
+          "bg-[color-mix(in_oklab,var(--foreground)_35%,var(--background))]",
         className,
       )}
     />
@@ -67,15 +70,18 @@ export function GridCell({
           className,
         )}
       >
-        <Dot status={status} className="-top-[3px] -left-[3px] max-lg:hidden" />
+        <Dot
+          status={status}
+          className="top-[-0.5px] left-[-0.5px] -translate-1/2 max-lg:hidden"
+        />
         {last?.right ? (
-          <Dot className="-top-[3px] -right-[3px] max-lg:hidden" />
+          <Dot className="top-[-0.5px] right-[-0.5px] translate-x-1/2 -translate-y-1/2 max-lg:hidden" />
         ) : null}
         {last?.bottom ? (
-          <Dot className="-bottom-[3px] -left-[3px] max-lg:hidden" />
+          <Dot className="bottom-[-0.5px] left-[-0.5px] -translate-x-1/2 translate-y-1/2 max-lg:hidden" />
         ) : null}
         {last?.right && last.bottom ? (
-          <Dot className="-right-[3px] -bottom-[3px] max-lg:hidden" />
+          <Dot className="right-[-0.5px] bottom-[-0.5px] translate-1/2 max-lg:hidden" />
         ) : null}
         <div className="flex flex-1 items-center justify-center">
           {children}

@@ -15,9 +15,9 @@ type SwitchProps = ComponentProps<typeof SwitchPrimitive.Root> & {
 }
 
 /**
- * Track 44×24 with our 8px radius. The 16px thumb sits 3px inside, so its
- * radius is 8 − 4 = 4px. It travels 20px on a fast curve, and while pressed
- * it widens toward the centre, as if it were being pushed.
+ * A 44×24 pill with a round 16px thumb, 3px inside. It travels 20px on a
+ * fast curve, and while pressed it stretches into a capsule toward the
+ * centre, as if it were being pushed.
  */
 function Switch({
   className,
@@ -33,7 +33,7 @@ function Switch({
       // Pending blocks input but keeps the switch at full strength.
       disabled={disabled || pending}
       className={cn(
-        "group/switch peer relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-lg border border-input bg-transparent outline-none",
+        "group/switch peer relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-input bg-transparent outline-none",
         // Release flash on the border; the fill follows the state quickly.
         "transition-[background-color,border-color,box-shadow] duration-400 ease-fade",
         "not-data-[disabled]:active:border-foreground/60 not-data-[disabled]:active:duration-0",
@@ -49,7 +49,7 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "pointer-events-none block h-4 w-4 rounded-sm bg-input",
+          "pointer-events-none block h-4 w-4 rounded-full bg-input",
           "translate-x-0.75 transition-[translate,width,background-color,opacity] duration-300 ease-snap",
           "group-hover/switch:bg-muted-foreground",
           "group-data-[checked]/switch:translate-x-5.75 group-data-[checked]/switch:bg-primary-foreground",
