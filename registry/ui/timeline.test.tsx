@@ -55,3 +55,60 @@ describe("Timeline", () => {
     expect(screen.getByText("No deploys yet.")).toBeTruthy()
   })
 })
+
+describe("Timeline v2", () => {
+  it("groups steps under a phase with its total", async () => {
+    const { TimelineGroup } = await import("./timeline")
+    render(
+      <Timeline>
+        <TimelineGroup label="Build" total="24s">
+          <TimelineItem status="done" title="Clone" />
+        </TimelineGroup>
+      </Timeline>,
+    )
+    expect(screen.getByText("Build")).toBeTruthy()
+    expect(screen.getByText("24s")).toBeTruthy()
+  })
+
+  it("draws proportional rails and a ghost of the last run", () => {
+    render(
+      <Timeline proportional pxPerSecond={4}>
+        <TimelineItem
+          status="done"
+          title="Build"
+          seconds={19}
+          previousSeconds={31}
+        />
+      </Timeline>,
+    )
+    const bars = document.querySelectorAll<HTMLElement>(".w-1.rounded-full")
+    const heights = [...bars].map((bar) => bar.style.height)
+    expect(heights).toContain("124px")
+    expect(heights).toContain("76px")
+    expect(screen.getByText("was 31s")).toBeTruthy()
+  })
+
+  it("sizes bar segments by their seconds", async () => {
+    const { TimelineBar } = await import("./timeline")
+    render(
+      <TimelineBar
+        segments={[
+          { id: "a", label: "Clone", seconds: 2, group: "Build" },
+          {
+            id: "b",
+            label: "Upload",
+            seconds: 11,
+            group: "Deploy",
+            status: "failed",
+          },
+        ]}
+      />,
+    )
+    const items = screen.getAllByRole("listitem")
+    expect(items[0]?.style.flexGrow).toBe("2")
+    expect(items[1]?.style.flexGrow).toBe("11")
+    expect(items[1]?.className).toContain("bg-destructive")
+    expect(screen.getByText("Build · 2s")).toBeTruthy()
+    expect(screen.getByText("00:13")).toBeTruthy()
+  })
+})

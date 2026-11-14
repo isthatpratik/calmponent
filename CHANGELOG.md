@@ -4,6 +4,8 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- `timeline`: `TimelineHeader`, `TimelineGroup` for phases, a `proportional` mode with rails as long as each step took and a ghost of the last run, and `TimelineBar` for the whole run at a glance. Phases differ by gray step; color stays for status.
+- Docs: showcase sections with a sliding Preview and Code toggle.
 - `heatmap`: a monochrome scale fitted to your data by quartiles, a lens on hover, one gliding tooltip, an accessible grid with arrow keys, and loading and empty states.
 - `timeline`: done, running, pending, failed, and skipped states. Connectors draw down as steps finish, new icons pop in, and loading and empty states are built in.
 - Motion tokens: `ease-snap`, `ease-pop` (a spring with about 4% overshoot), and `ease-fade`.

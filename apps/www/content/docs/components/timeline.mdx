@@ -3,11 +3,27 @@ title: Timeline
 description: A timeline of events with done, running, pending, failed, and skipped states. Connectors draw down as steps finish, and loading and empty states are built in.
 ---
 
-import { TimelineDemo, TimelineStates } from "@/components/demos/timeline"
+import { Example } from "@/components/example"
+import {
+  GlanceTimeline,
+  glanceCode,
+  PullRequestTimeline,
+  pullRequestCode,
+  TimelineDemo,
+  TimelineStates,
+} from "@/components/demos/timeline"
 
-<TimelineDemo />
+<Example title="A pull request" description="Rails as long as each step took, next to a ghost of the last run." code={pullRequestCode}>
+  <PullRequestTimeline />
+</Example>
 
-Run the deploy: the running step turns, and when it finishes, its line draws down to the next step while the new icon pops in. A failed step marks the rest as skipped.
+<Example title="At a glance" description="The whole run as one bar. Hover a segment." code={glanceCode}>
+  <GlanceTimeline />
+</Example>
+
+<Example title="Live run" description="The running step turns; when it finishes, its line draws down and the next icon pops in.">
+  <TimelineDemo />
+</Example>
 
 ## Install
 
@@ -30,7 +46,11 @@ Run the deploy: the running step turns, and when it finishes, its line draws dow
 ## Parts
 
 - `Timeline`: an ordered list. Takes `loading` (skeleton rows shaped like items), `loadingRows` (default `3`), and `empty` (shown when there are no items).
-- `TimelineItem`: takes `status` (`"done"`, `"running"`, `"pending"`, `"failed"`, or `"skipped"`), `title`, `description`, `time`, and `duration`.
+- `TimelineItem`: takes `status` (`"done"`, `"running"`, `"pending"`, `"failed"`, or `"skipped"`), `title`, `description`, `time`, and `duration`. In proportional mode, also `seconds` and `previousSeconds`.
+- `Timeline proportional`: draws each rail as long as its step took (`pxPerSecond`, default `4`, capped at 160px), with a ghost of `previousSeconds` and a "was 31s" note.
+- `TimelineGroup`: a phase, such as Build, with a `label` and a `total`.
+- `TimelineHeader`: a `title`, mono `meta` such as author and commit, and a `total`.
+- `TimelineBar`: the run as one bar. Each segment (`{ id, label, seconds, group, status }`) is as wide as it took. Phases differ by gray step; a failed segment is red, and a running one breathes. Segments grow in from the left, and one tooltip glides between them.
 
 ## Accessibility
 
