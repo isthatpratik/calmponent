@@ -453,6 +453,26 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Toasts for success, error with retry, warning, and loading that turns into its result. They stack, spread out on hover, and swipe away.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens",
+        "isthatpratik/calmponent/spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
