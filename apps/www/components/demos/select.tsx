@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@calmponent/registry/ui/select"
 import type { ReactNode } from "react"
+import { usePreviewState } from "@/components/preview-state"
 
 const regions = [
   { label: "Frankfurt", value: "fra" },
@@ -27,27 +28,37 @@ const regions = [
 ]
 
 export function SelectDemo() {
+  const forced = usePreviewState(["empty", "disabled"])
+  const empty = forced === "empty"
   return (
     <div className="well p-6">
       <Field className="max-w-xs">
         <FieldLabel>Region</FieldLabel>
-        <Select items={regions} defaultValue="bom">
+        <Select
+          items={empty ? [] : regions}
+          defaultValue={empty ? undefined : "bom"}
+          disabled={forced === "disabled"}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Choose a region" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Europe</SelectLabel>
-              <SelectItem value="fra">Frankfurt</SelectItem>
-              <SelectItem value="lhr">London</SelectItem>
-            </SelectGroup>
-            <SelectSeparator />
-            <SelectGroup>
-              <SelectLabel>Asia and Americas</SelectLabel>
-              <SelectItem value="bom">Mumbai</SelectItem>
-              <SelectItem value="sin">Singapore</SelectItem>
-              <SelectItem value="iad">Virginia</SelectItem>
-            </SelectGroup>
+          <SelectContent empty="No regions are available for your plan.">
+            {empty ? null : (
+              <>
+                <SelectGroup>
+                  <SelectLabel>Europe</SelectLabel>
+                  <SelectItem value="fra">Frankfurt</SelectItem>
+                  <SelectItem value="lhr">London</SelectItem>
+                </SelectGroup>
+                <SelectSeparator />
+                <SelectGroup>
+                  <SelectLabel>Asia and Americas</SelectLabel>
+                  <SelectItem value="bom">Mumbai</SelectItem>
+                  <SelectItem value="sin">Singapore</SelectItem>
+                  <SelectItem value="iad">Virginia</SelectItem>
+                </SelectGroup>
+              </>
+            )}
           </SelectContent>
         </Select>
         <FieldDescription>Where your data is stored.</FieldDescription>
