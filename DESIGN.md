@@ -1,6 +1,6 @@
 # Calmponent design system
 
-The rules every Calmponent component and page follows. The full reasoning is in [ADR 0009](docs/decisions/0009-design-system.md) and [ADR 0011](docs/decisions/0011-site-structure.md). The tokens live in [`apps/www/app/globals.css`](apps/www/app/globals.css).
+The rules every Calmponent component and page follows. This file is for the people and AI agents who build Calmponent; it is not published on the site. The full reasoning is in [ADR 0009](docs/decisions/0009-design-system.md) and [ADR 0011](docs/decisions/0011-site-structure.md). The tokens live in [`apps/www/app/globals.css`](apps/www/app/globals.css).
 
 ## Principles
 
@@ -46,9 +46,21 @@ Code is the one place where color is not only for status. Syntax colors make cod
 
 Every syntax color passes 4.5:1 on the code surfaces.
 
-## Mark
+## Brand
 
-A rounded square that opens on the right into a "C", with a dot inside as its status light: Calmponent, a component, and its state. 24-unit grid, 18-unit square, radius 5, stroke 2 with round caps, dot radius 2.5. One color only. The geometry lives in [`apps/www/lib/mark.ts`](apps/www/lib/mark.ts).
+### Name
+
+Write **Calmponent** as one word with a capital C. It joins "calm" and "component". Describe it as "an open-source React UI library for shadcn/ui and Tailwind CSS". The tagline is "The React UI library with every state built in". Do not call it "Finished components for shadcn/ui".
+
+### Mark
+
+A rounded square that opens on the right into a "C", with a dot inside as its status light: Calmponent, a component, and its state. 24-unit grid, 18-unit square, radius 5, stroke 2 with round caps, dot radius 2.5. The geometry lives in [`apps/www/lib/mark.ts`](apps/www/lib/mark.ts). Files: [`apps/www/public/brand/`](apps/www/public/brand/) and [`apps/www/app/icon.svg`](apps/www/app/icon.svg).
+
+- One color only: the current text color, black, or white.
+- Clear space of one dot diameter on every side.
+- No color, gradients, shadows, or outlines. Do not stretch or rotate it.
+- At 16px and below, use the mark without the wordmark.
+- On hover, the dot grows on `ease-pop`. That is the mark's only motion.
 
 ## Type
 
@@ -80,3 +92,5 @@ Durations: 200 ms for color and opacity, 300 ms for state changes, 500 ms for la
 ## Writing
 
 Plain, specific English. Short sentences, active voice. Errors say what failed and what to do next. No exclamation marks.
+
+Say what a component does, not how exciting it is. Do not use "revolutionize", "supercharge", "effortless", or similar words.

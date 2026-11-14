@@ -24,8 +24,8 @@ const links = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-border/60 border-b bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between gap-6 px-4 sm:px-6">
-        <div className="flex items-center gap-4 sm:gap-8">
+      <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6">
+        <div className="flex items-center gap-2 sm:gap-8">
           <Logo />
           <nav aria-label="Main" className="flex items-center gap-1">
             {links.map((link) => (
@@ -39,7 +39,7 @@ export function SiteHeader() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <Link
             href="https://github.com/isthatpratik/calmponent/releases"
             className="caption-4 hidden rounded-md border border-border px-2 py-1 font-mono text-muted-foreground transition-colors duration-200 ease-calm hover:text-foreground sm:block"
@@ -51,7 +51,7 @@ export function SiteHeader() {
           <Link
             href="https://github.com/isthatpratik/calmponent"
             aria-label="Calmponent on GitHub"
-            className="flex size-8 items-center justify-center rounded-md text-muted-foreground outline-none transition-colors duration-200 ease-calm hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex size-8 items-center justify-center rounded-md text-muted-foreground max-[23rem]:hidden outline-none transition-colors duration-200 ease-calm hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
           >
             <GitHub />
           </Link>

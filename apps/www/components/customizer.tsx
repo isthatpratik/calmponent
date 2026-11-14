@@ -158,8 +158,13 @@ export function Customizer() {
         <span className="max-sm:sr-only">Customize</span>
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Positioner sideOffset={8} align="end" className="z-50">
-          <Popover.Popup className="max-h-(--available-height) w-80 origin-(--transform-origin) overflow-y-auto rounded-2xl border border-border bg-popover p-5 text-popover-foreground shadow-xl outline-none transition-[opacity,scale] duration-200 ease-calm data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 motion-reduce:data-[ending-style]:scale-100 motion-reduce:data-[starting-style]:scale-100">
+        <Popover.Positioner
+          sideOffset={8}
+          align="end"
+          collisionPadding={12}
+          className="z-50"
+        >
+          <Popover.Popup className="max-h-(--available-height) w-[min(20rem,calc(100vw-2rem))] origin-(--transform-origin) overflow-y-auto rounded-2xl border border-border bg-popover p-5 text-popover-foreground shadow-xl outline-none transition-[opacity,scale] duration-200 ease-calm data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 motion-reduce:data-[ending-style]:scale-100 motion-reduce:data-[starting-style]:scale-100">
             <Popover.Title className="sr-only">
               Customize the preview
             </Popover.Title>

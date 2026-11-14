@@ -199,28 +199,19 @@ export function SwitchDemo() {
   const forced = usePreviewState(["loading", "error", "disabled"])
   const [on, setOn] = useState(true)
   const [pending, setPending] = useState(false)
-  const [error, setError] = useState(false)
-  const [failNext, setFailNext] = useState(true)
 
   async function change(next: boolean) {
-    setError(false)
     setOn(next)
     setPending(true)
     await wait(1200)
     setPending(false)
-    if (failNext) {
-      setOn(!next)
-      setError(true)
-    }
-    // Only the first change fails; every change after that saves.
-    setFailNext(false)
   }
 
   return (
     <div className="well p-6">
       <Field
         orientation="horizontal"
-        invalid={error || forced === "error"}
+        invalid={forced === "error"}
         className="max-w-sm flex-wrap justify-start"
       >
         <Switch
@@ -230,13 +221,10 @@ export function SwitchDemo() {
           onCheckedChange={change}
         />
         <FieldLabel>Weekly summary email</FieldLabel>
-        <FieldError match={error || forced === "error"} className="w-full">
+        <FieldError match={forced === "error"} className="w-full">
           Could not save. Try again.
         </FieldError>
       </Field>
-      <p className="caption-2 mt-4 text-muted-foreground">
-        The first change fails on purpose. Every change after that saves.
-      </p>
     </div>
   )
 }

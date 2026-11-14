@@ -4,6 +4,11 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- Docs: the Design system and Brand pages are no longer on the site. Their rules live in `DESIGN.md`, for the people and agents who build Calmponent.
+- Docs: Installation explains how to use your own shadcn/ui theme, including shadcn/create presets.
+- Docs: the switch demos always save. Use the State control to see the failed state.
+- `tabs`: on narrow screens the tab list scrolls sideways instead of overflowing the page.
+- Site: the header, the hero, and long inline code fit on 320px screens. Numbered lists in docs show their numbers.
 - Brand: a new mark. The rounded square opens into a "C" for Calmponent, and the dot inside is its status light. Favicon, Apple touch icon, OG images, and the downloadable files all use it.
 - Tokens: softer text (`#171717` light, `#ededed` dark) and status colors from the Geist scale (success `#297a3a` / `#62c073`, warning `#a35200` / `#f2a20d`, destructive `#cb2a2f` / `#ff6166`). All pass the contrast check.
 - Docs: colored code, in light and dark, on the Geist step-900 colors. Example code is highlighted on the server with the same themes.
