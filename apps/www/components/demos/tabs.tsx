@@ -10,6 +10,7 @@ import {
   TabsTrigger,
 } from "@calmponent/registry/ui/tabs"
 import { useState } from "react"
+import { usePreviewState } from "@/components/preview-state"
 
 export function TabsDemo() {
   return (
@@ -51,6 +52,7 @@ export function TabsDemo() {
 
 export function TabsLineDemo() {
   const [loading, setLoading] = useState(true)
+  const forced = usePreviewState(["loading"])
   return (
     <Tabs
       defaultValue="overview"
@@ -67,7 +69,11 @@ export function TabsLineDemo() {
         <TabsTrigger value="activity">Activity</TabsTrigger>
         <TabsTrigger value="settings">Settings</TabsTrigger>
       </TabsList>
-      <TabsContent value="overview" className="body-6 text-muted-foreground">
+      <TabsContent
+        value="overview"
+        loading={forced === "loading"}
+        className="body-6 text-muted-foreground"
+      >
         18 deploys this week, 2 failed. Median build time 31 seconds.
       </TabsContent>
       <TabsContent

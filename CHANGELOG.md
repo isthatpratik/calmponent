@@ -4,6 +4,8 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- Docs: a State control in the page header puts every preview on the page into Loading, Success, Error, Empty, or Disabled. Each demo declares the states it supports, and the control lists only those.
+- Docs: the switch demos fail only on the first change, then always save.
 - Docs: a Customize panel to preview components in your look: accent (mono, blue, rose), shape from square to pill, typeface, and motion. Copy setup, copy link, copy tokens, and reset. Choices persist and apply before paint.
 - Tokens: `xl` and `2xl` radii are capped at 16px and 20px, so a pill radius rounds controls, not whole surfaces.
 - `switch`: now a full pill with a round thumb; pressing stretches it into a capsule.

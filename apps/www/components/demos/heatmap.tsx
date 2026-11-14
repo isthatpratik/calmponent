@@ -1,6 +1,7 @@
 "use client"
 
 import { Heatmap, type HeatmapDatum } from "@calmponent/registry/ui/heatmap"
+import { usePreviewState } from "@/components/preview-state"
 
 const endDate = new Date(Date.UTC(2026, 10, 14))
 
@@ -24,6 +25,7 @@ function sample(weeks: number): HeatmapDatum[] {
 const data = sample(26)
 
 export function HeatmapDemo() {
+  const forced = usePreviewState(["loading", "empty"])
   return (
     <div className="flex flex-col gap-4 well p-6">
       <div className="flex items-baseline justify-between gap-4">
@@ -32,7 +34,12 @@ export function HeatmapDemo() {
           {data.reduce((sum, day) => sum + day.count, 0)} total
         </span>
       </div>
-      <Heatmap data={data} weeks={26} endDate={endDate} />
+      <Heatmap
+        data={forced === "empty" ? [] : data}
+        weeks={26}
+        endDate={endDate}
+        loading={forced === "loading"}
+      />
     </div>
   )
 }

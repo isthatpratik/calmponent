@@ -6,13 +6,17 @@ import {
   FieldLabel,
 } from "@calmponent/registry/ui/field"
 import { Textarea } from "@calmponent/registry/ui/textarea"
+import { usePreviewState } from "@/components/preview-state"
 
 export function TextareaDemo() {
+  const forced = usePreviewState(["error", "disabled"])
   return (
     <div className="well p-6">
       <Field className="max-w-md">
         <FieldLabel>Bio</FieldLabel>
         <Textarea
+          aria-invalid={forced === "error" || undefined}
+          disabled={forced === "disabled"}
           maxLength={120}
           defaultValue="Designer and engineer. I build calm interfaces with every state."
         />

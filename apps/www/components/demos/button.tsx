@@ -6,6 +6,7 @@ import {
   type ButtonStatus,
 } from "@calmponent/registry/ui/button"
 import { useEffect, useRef, useState } from "react"
+import { usePreviewState } from "@/components/preview-state"
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -36,11 +37,15 @@ function useFakeAction(result: "success" | "error") {
 export function ButtonDemo() {
   const save = useFakeAction("success")
   const publish = useFakeAction("error")
+  const forced = usePreviewState(["loading", "success", "error", "disabled"])
+  const pick = (live: ButtonStatus) =>
+    forced === "live" || forced === "disabled" ? live : forced
 
   return (
     <div className="flex flex-wrap items-center gap-3 well p-6">
       <Button
-        status={save.status}
+        status={pick(save.status)}
+        disabled={forced === "disabled"}
         statusText={{ loading: "Saving", success: "Saved", error: "Try again" }}
         onClick={save.run}
       >
@@ -48,7 +53,8 @@ export function ButtonDemo() {
       </Button>
       <Button
         variant="outline"
-        status={publish.status}
+        status={pick(publish.status)}
+        disabled={forced === "disabled"}
         statusText={{
           loading: "Publishing",
           success: "Published",

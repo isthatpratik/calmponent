@@ -10,6 +10,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@calmponent/registry/ui/radio-group"
 import { Switch } from "@calmponent/registry/ui/switch"
 import { type ReactNode, useState } from "react"
+import { usePreviewState } from "@/components/preview-state"
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -36,6 +37,7 @@ function Grid({ states }: { states: { label: string; node: ReactNode }[] }) {
 const items = ["Invoices", "Receipts", "Reports"]
 
 export function CheckboxDemo() {
+  const forced = usePreviewState(["error", "disabled"])
   const [checked, setChecked] = useState<string[]>(["Invoices"])
   const all = checked.length === items.length
   const some = checked.length > 0 && !all
@@ -43,6 +45,8 @@ export function CheckboxDemo() {
     <div className="flex flex-col gap-3 well p-6">
       <Field orientation="horizontal" className="w-fit">
         <Checkbox
+          aria-invalid={forced === "error" || undefined}
+          disabled={forced === "disabled"}
           checked={all}
           indeterminate={some}
           onCheckedChange={(value) => setChecked(value ? items : [])}
@@ -53,6 +57,8 @@ export function CheckboxDemo() {
         {items.map((item) => (
           <Field key={item} orientation="horizontal" className="w-fit">
             <Checkbox
+              aria-invalid={forced === "error" || undefined}
+              disabled={forced === "disabled"}
               checked={checked.includes(item)}
               onCheckedChange={(value) =>
                 setChecked((current) =>
@@ -190,6 +196,7 @@ export function RadioStates() {
 }
 
 export function SwitchDemo() {
+  const forced = usePreviewState(["loading", "error", "disabled"])
   const [on, setOn] = useState(true)
   const [pending, setPending] = useState(false)
   const [error, setError] = useState(false)
@@ -213,12 +220,17 @@ export function SwitchDemo() {
     <div className="well p-6">
       <Field
         orientation="horizontal"
-        invalid={error}
+        invalid={error || forced === "error"}
         className="max-w-sm flex-wrap justify-start"
       >
-        <Switch checked={on} pending={pending} onCheckedChange={change} />
+        <Switch
+          checked={on}
+          pending={pending || forced === "loading"}
+          disabled={forced === "disabled"}
+          onCheckedChange={change}
+        />
         <FieldLabel>Weekly summary email</FieldLabel>
-        <FieldError match={error} className="w-full">
+        <FieldError match={error || forced === "error"} className="w-full">
           Could not save. Try again.
         </FieldError>
       </Field>

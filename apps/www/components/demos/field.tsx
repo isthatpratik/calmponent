@@ -9,21 +9,31 @@ import {
 } from "@calmponent/registry/ui/field"
 import { Input } from "@calmponent/registry/ui/input"
 import { useEffect, useRef, useState } from "react"
+import { usePreviewState } from "@/components/preview-state"
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 const taken = ["admin", "calm", "pratik"]
 
 export function FieldDemo() {
   const [checking, setChecking] = useState(false)
+  const forced = usePreviewState(["loading", "error", "disabled"])
 
   return (
     <div className="well p-6">
       <FieldGroup className="max-w-sm">
-        <Field validationMode="onBlur">
+        <Field
+          validationMode="onBlur"
+          invalid={forced === "error" || undefined}
+          disabled={forced === "disabled"}
+        >
           <FieldLabel required>Email</FieldLabel>
           <Input type="email" required placeholder="ada@example.com" />
           <FieldDescription>Type ada, then click away.</FieldDescription>
-          <FieldError />
+          {forced === "error" ? (
+            <FieldError match>Enter a full email address.</FieldError>
+          ) : (
+            <FieldError />
+          )}
         </Field>
         <Field
           validationMode="onChange"
@@ -40,7 +50,11 @@ export function FieldDemo() {
           }}
         >
           <FieldLabel>Username</FieldLabel>
-          <Input loading={checking} placeholder="Try calm, then ada" />
+          <Input
+            loading={checking || forced === "loading"}
+            disabled={forced === "disabled"}
+            placeholder="Try calm, then ada"
+          />
           <FieldDescription>Checked as you type.</FieldDescription>
           <FieldError />
         </Field>

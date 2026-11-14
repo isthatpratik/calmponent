@@ -10,6 +10,7 @@ import {
   type TimelineStatus,
 } from "@calmponent/registry/ui/timeline"
 import { useEffect, useRef, useState } from "react"
+import { usePreviewState } from "@/components/preview-state"
 
 const steps = [
   { title: "Checkout", description: "main at 3f9c21a", seconds: 2 },
@@ -27,6 +28,7 @@ function clock(offset: number) {
 }
 
 export function TimelineDemo() {
+  const forced = usePreviewState(["loading", "empty"])
   const [statuses, setStatuses] = useState<TimelineStatus[]>(
     steps.map(() => "pending"),
   )
@@ -91,28 +93,36 @@ export function TimelineDemo() {
           Run deploy
         </Button>
       </div>
-      <Timeline className="max-w-md">
-        {steps.map((step, index) => {
-          const status = statuses[index] ?? "pending"
-          const time = clock(elapsed)
-          elapsed += step.seconds
-          return (
-            <TimelineItem
-              key={step.title}
-              status={status}
-              title={step.title}
-              description={
-                status === "failed"
-                  ? "2 tests failed in form.test.tsx"
-                  : step.description
-              }
-              time={
-                status === "pending" || status === "skipped" ? undefined : time
-              }
-              duration={status === "done" ? `${step.seconds}s` : undefined}
-            />
-          )
-        })}
+      <Timeline
+        className="max-w-md"
+        loading={forced === "loading"}
+        empty="No deploys yet. Push to main to start one."
+      >
+        {forced === "empty"
+          ? null
+          : steps.map((step, index) => {
+              const status = statuses[index] ?? "pending"
+              const time = clock(elapsed)
+              elapsed += step.seconds
+              return (
+                <TimelineItem
+                  key={step.title}
+                  status={status}
+                  title={step.title}
+                  description={
+                    status === "failed"
+                      ? "2 tests failed in form.test.tsx"
+                      : step.description
+                  }
+                  time={
+                    status === "pending" || status === "skipped"
+                      ? undefined
+                      : time
+                  }
+                  duration={status === "done" ? `${step.seconds}s` : undefined}
+                />
+              )
+            })}
       </Timeline>
     </div>
   )
@@ -144,6 +154,21 @@ export function TimelineStates() {
 }
 
 export function PullRequestTimeline() {
+  const forced = usePreviewState(["loading", "empty"])
+  if (forced !== "live") {
+    return (
+      <div className="mx-auto flex max-w-xl flex-col gap-6">
+        <TimelineHeader
+          title="Update pricing page"
+          meta="Ines · main / a3f91c2"
+        />
+        <Timeline
+          loading={forced === "loading"}
+          empty="This pull request has no runs yet."
+        />
+      </div>
+    )
+  }
   return (
     <div className="mx-auto flex max-w-xl flex-col gap-6">
       <TimelineHeader
@@ -247,7 +272,19 @@ const glance = [
 ]
 
 export function GlanceTimeline() {
+  const forced = usePreviewState(["loading", "empty"])
   let elapsed = 0
+  if (forced !== "live") {
+    return (
+      <div className="mx-auto flex max-w-xl flex-col gap-8">
+        <TimelineHeader
+          title="Publish Halo case study"
+          meta="Maya · main / 7be04d1"
+        />
+        <Timeline loading={forced === "loading"} empty="No runs yet." />
+      </div>
+    )
+  }
   return (
     <div className="mx-auto flex max-w-xl flex-col gap-8">
       <TimelineHeader
