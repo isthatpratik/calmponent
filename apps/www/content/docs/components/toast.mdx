@@ -1,0 +1,63 @@
+---
+title: Toast
+description: Toasts for success, error with retry, warning, and loading that turns into its result. They stack, spread out on hover, and swipe away.
+---
+
+import { ToastDemo } from "@/components/demos/toast"
+
+<ToastDemo />
+
+Click a few: they stack, and hovering the stack spreads it out. "Loading to result" fails the first time and succeeds the next, in the same toast. Swipe a toast right or down to dismiss it.
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/toast" />
+
+## Usage
+
+Render `<Toaster />` once, near the root of your app.
+
+```tsx
+import { Toaster } from "@/components/ui/toast"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+Then call `toast` from anywhere, inside or outside React.
+
+```tsx
+toast("Invite sent")
+toast.success("Saved", { description: "Your changes are live." })
+toast.error("Upload failed", { action: { label: "Retry", onClick: retry } })
+toast.warning("Storage almost full")
+
+toast.promise(save(), {
+  loading: "Saving",
+  success: "Saved",
+  error: "Could not save",
+})
+```
+
+## API
+
+- `toast(title, options)`, `toast.success`, `toast.error`, `toast.warning`, `toast.loading`: return the toast id.
+- `options`: `description`, `action` (`{ label, onClick }`), `timeout` in milliseconds (`0` keeps it open), and `id` (reuse it to update in place).
+- `toast.promise(promise, { loading, success, error })`: one toast that turns from loading into its result. Each message is a string or `{ title, description }`.
+- `toast.update(id, title, options)` and `toast.dismiss(id?)`. Without an id, `dismiss` closes all toasts.
+- `<Toaster limit={3} />`: how many toasts show at once.
+
+## Accessibility
+
+- Toasts use a live region. Errors interrupt; other toasts wait until the screen reader is quiet.
+- Press F6 to move focus to the toasts. While a toast has focus or the stack is hovered, its timer pauses.
+- The close button joins the accessibility tree when the stack is focused or expanded, so announcements stay short.
+- With reduced motion, toasts fade instead of moving.

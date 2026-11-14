@@ -1,3 +1,4 @@
+import { Toaster } from "@calmponent/registry/ui/toast"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import type { ReactNode } from "react"
@@ -28,7 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`dark ${geistSans.variable} ${geistMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }
