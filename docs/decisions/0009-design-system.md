@@ -38,7 +38,7 @@ Input borders: `#6B6B6B` on `#181818` (3.33) in dark mode, `#858585` on `#F5F5F5
 ### Type
 
 - **Geist** for text and **Geist Mono** for code, loaded with `next/font/google`. The user chose Geist because it is familiar and reads well. shadcn/ui, Vercel, and React Bits also use it, so Calmponent's identity must come from its states and motion, not from its font.
-- Text styles follow the `landing-page-design` skill: Heading 1 to 6, Title 1 to 5, Body 1 to 6, Button, and Caption, each on a Tailwind type-scale step. They exist as utilities: `heading-1`, `body-6`, `caption-3`, and so on.
+- Text styles: Heading 1 to 6, Title 1 to 5, Body 1 to 6, Button, and Caption, each on a Tailwind type-scale step. They exist as utilities: `heading-1`, `body-6`, `caption-3`, and so on.
 - **Tracking:** headings use `-0.025em` (`tracking-tight`). Body, buttons, and captions use `0`. Tight tracking on small text makes it harder to read.
 
 ### Radius
@@ -67,7 +67,6 @@ Phosphor (`@phosphor-icons/react`). Not Lucide, not Material.
 
 ## Sources
 
-- `landing-page-design` skill (text styles, spacing, radius formula, dark surface colors, motion curve) and `stageshow` skill (motion rules).
 - Live CSS of ui.shadcn.com, vercel.com, and reactbits.dev (Geist), checked 2026-11-14.
 - WCAG 2.2: 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast.
 - [shadcn/ui theming](https://ui.shadcn.com/docs/theming): the CSS variable names and the multiplied radius scale.
