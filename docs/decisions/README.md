@@ -17,7 +17,7 @@ Rules:
 | D3 | Distribution | shadcn registry only, or also an npm package? Namespace, registry hosting, support for npm, pnpm, bun, and yarn. | Accepted. See [0004](0004-distribution.md). | accepted |
 | D4 | Frameworks | Which frameworks do we support and test? Next.js App Router, Vite, React Router, Astro, TanStack Start. Server Components? | Accepted. See [0005](0005-frameworks.md). | accepted |
 | D5 | Releases and versions | Semver for the registry? Git tags, changelog, how users find updates, breaking-change policy. | Accepted. See [0006](0006-releases.md). | accepted |
-| D6 | Design system | Colors, themes (light and dark), type, spacing, radius, shadows, motion tokens. How users theme it. | Decide with the design skills and the saved design taste (monochrome, polar.sh, primora.xyz). | open |
+| D6 | Design system | Colors, themes (light and dark), type, spacing, radius, shadows, motion tokens. How users theme it. | Accepted. See [0009](0009-design-system.md). | accepted |
 | D7 | Site structure | Landing page, showcase, blocks, docs, theme tuner, states matrix. Navigation and URLs. | Decide with the `landing-page-design` and `stageshow` skills. | open |
 | D8 | Docs stack | Fumadocs, Nextra, or custom on Next.js. Search, MDX, live previews, "Copy for AI". | Accepted: Fumadocs, headless. See [0008](0008-docs-stack.md). | accepted |
 | D9 | Quality gates | Accessibility tests, visual regression, bundle size limits, reduced motion checks, browser matrix, CI. | All four gates in CI before v1. | open |
@@ -38,3 +38,4 @@ Rules:
 - [0006: Releases and versions](0006-releases.md), D5 (2026-11-14)
 - [0007: Repository layout and tools](0007-repo-tooling.md), D11 (2026-11-14)
 - [0008: Docs stack](0008-docs-stack.md), D8 (2026-11-14)
+- [0009: Design system](0009-design-system.md), D6 (2026-11-14)

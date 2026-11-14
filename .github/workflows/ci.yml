@@ -40,6 +40,9 @@ jobs:
       - name: Lint and format
         run: pnpm check
 
+      - name: Contrast
+        run: pnpm check:contrast
+
       - name: Typecheck
         run: pnpm typecheck
 

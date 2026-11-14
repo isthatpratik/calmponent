@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { mdxComponents } from "@/components/mdx"
 import { source } from "@/lib/source"
 
 export const dynamicParams = false
@@ -28,12 +29,14 @@ export default async function DocPage(props: PageProps<"/docs/[[...slug]]">) {
 
   return (
     <article className="max-w-none">
-      <h1 className="font-semibold text-3xl">{page.data.title}</h1>
+      <h1 className="heading-4">{page.data.title}</h1>
       {page.data.description ? (
-        <p className="mt-2 text-neutral-600">{page.data.description}</p>
+        <p className="body-3 mt-2 text-muted-foreground">
+          {page.data.description}
+        </p>
       ) : null}
-      <div className="mt-8 space-y-4 leading-7">
-        <MDX />
+      <div className="body-3 mt-8 space-y-4">
+        <MDX components={mdxComponents} />
       </div>
     </article>
   )
