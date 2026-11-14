@@ -1,0 +1,48 @@
+---
+title: Heatmap
+description: An activity heatmap with a monochrome scale fitted to the data, a lens on hover, a gliding tooltip, keyboard navigation, and loading and empty states.
+---
+
+import { HeatmapDemo, HeatmapStates } from "@/components/demos/heatmap"
+
+<HeatmapDemo />
+
+Move across the grid: the day under the pointer swells and its neighbours follow a little, while one tooltip glides from day to day. Tab into the grid and use the arrow keys, Home, and End.
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/heatmap" />
+
+## Usage
+
+```tsx
+<Heatmap
+  data={[
+    { date: "2026-11-13", count: 4 },
+    { date: "2026-11-14", count: 9 },
+  ]}
+  weeks={26}
+/>
+```
+
+## States
+
+<HeatmapStates />
+
+## Props
+
+- `data`: one entry per day, `{ date: "YYYY-MM-DD", count }`. Missing days count as 0.
+- `weeks`: how many weeks to show. Defaults to `26`.
+- `endDate`: the last day shown. Defaults to today.
+- `formatLabel(count, date)`: the text for the tooltip and screen readers.
+- `loading`: shows a pulsing grid. `empty`: shown when every day is 0.
+
+## How the scale works
+
+Empty days use `foreground` at 8%. The other days fall into four levels, at 30%, 55%, 80%, and 100% of `foreground`, split by the quartiles of your non-zero counts. One very busy day does not wash out the rest.
+
+## Accessibility
+
+- The grid is a table with `role="grid"`: seven rows, one cell per day, and one tab stop. Arrow keys move between days, and Home and End jump to the first and last week.
+- Each day has a label such as "9 contributions on Nov 14, 2026". The visual tooltip is hidden from screen readers to avoid reading it twice.
+- With reduced motion, there is no lens, wave, or pulse.

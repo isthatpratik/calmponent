@@ -513,6 +513,22 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "heatmap",
+      "type": "registry:ui",
+      "title": "Heatmap",
+      "description": "An activity heatmap with a monochrome scale fitted to the data, a lens on hover, a gliding tooltip, keyboard navigation, and loading and empty states.",
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/heatmap.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
