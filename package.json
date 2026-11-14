@@ -20,7 +20,7 @@
     "lint": "biome lint .",
     "format": "biome format --write .",
     "check": "biome check .",
-    "registry:build": "shadcn build ./registry.json --output ./apps/www/public/r",
+    "registry:build": "node scripts/sync-tokens.mjs && shadcn build ./registry.json --output ./apps/www/public/r",
     "check:contrast": "node scripts/check-contrast.mjs"
   },
   "devDependencies": {

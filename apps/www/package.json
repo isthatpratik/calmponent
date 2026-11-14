@@ -11,6 +11,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@calmponent/registry": "workspace:*",
     "fumadocs-core": "^16.19.0",
     "fumadocs-mdx": "^15.6.0",
     "next": "^16.4.6",

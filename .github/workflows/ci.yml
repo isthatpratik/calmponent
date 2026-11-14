@@ -52,11 +52,12 @@ jobs:
       - name: Validate registry
         run: pnpm exec shadcn registry validate ./registry.json
 
-      # The built JSON in apps/www/public/r is committed. Fail if it is stale.
+      # registry.json (token items) and apps/www/public/r are generated and committed.
+      # Fail if either is stale.
       - name: Check registry build is up to date
         run: |
           pnpm registry:build
-          git diff --exit-code -- apps/www/public/r
+          git diff --exit-code -- registry.json apps/www/public/r
 
       - name: Build
         run: pnpm build
