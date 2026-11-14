@@ -11,7 +11,8 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/components/ui/*": ["./ui/*"],
+      "@/lib/*": ["./lib/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"]

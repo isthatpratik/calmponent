@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "A dash ring loader that loops seamlessly and shows a still arc with reduced motion.",
+  "registryDependencies": [
+    "isthatpratik/calmponent/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/spinner.tsx",
+      "content": "import type { ComponentProps } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * A dash ring: a faint track and an arc that grows, travels, and shrinks\n * while it turns. The loop ends where it began. It keeps running while\n * hidden, so it never restarts when it fades in. With reduced motion, a\n * still arc shows instead, because SVG animation ignores that setting.\n */\ntype SpinnerProps = ComponentProps<\"svg\"> & {\n  /**\n   * Hides the spinner from assistive tech. Use it when the surrounding\n   * component already announces that it is loading.\n   */\n  decorative?: boolean\n}\n\nfunction Spinner({ className, decorative, ...props }: SpinnerProps) {\n  const spline = \"0.22 1 0.36 1;0.22 1 0.36 1\"\n  return (\n    <svg\n      role={decorative ? \"presentation\" : \"status\"}\n      aria-label={decorative ? undefined : \"Loading\"}\n      aria-hidden={decorative || undefined}\n      data-slot=\"spinner\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth=\"2\"\n      strokeLinecap=\"round\"\n      className={cn(\"size-4 shrink-0\", className)}\n      {...props}\n    >\n      <circle cx=\"12\" cy=\"12\" r=\"9\" opacity=\"0.2\" />\n      <circle\n        cx=\"12\"\n        cy=\"12\"\n        r=\"9\"\n        strokeDasharray=\"1 57\"\n        className=\"motion-reduce:hidden\"\n      >\n        <animateTransform\n          attributeName=\"transform\"\n          type=\"rotate\"\n          from=\"0 12 12\"\n          to=\"360 12 12\"\n          dur=\"1.6s\"\n          repeatCount=\"indefinite\"\n        />\n        <animate\n          attributeName=\"stroke-dasharray\"\n          values=\"1 57;30 57;1 57\"\n          keyTimes=\"0;0.5;1\"\n          calcMode=\"spline\"\n          keySplines={spline}\n          dur=\"1.2s\"\n          repeatCount=\"indefinite\"\n        />\n        <animate\n          attributeName=\"stroke-dashoffset\"\n          values=\"0;-10;-56.5\"\n          keyTimes=\"0;0.5;1\"\n          calcMode=\"spline\"\n          keySplines={spline}\n          dur=\"1.2s\"\n          repeatCount=\"indefinite\"\n        />\n      </circle>\n      <circle\n        cx=\"12\"\n        cy=\"12\"\n        r=\"9\"\n        strokeDasharray=\"14 57\"\n        className=\"hidden motion-reduce:block\"\n      />\n    </svg>\n  )\n}\n\nexport { Spinner, type SpinnerProps }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,45 @@
+---
+title: Field
+description: Label, description, and error for a form control. Errors grow in and out, and a check appears when the value is valid.
+---
+
+import { FieldDemo, FieldStates } from "@/components/demos/field"
+
+<FieldDemo />
+
+Type `ada` in the email field and click away: the error grows in and pushes the content below it down. Finish the address: the error shrinks away. Untouched fields are not checked, so nobody sees an error before typing. In the username field, type `calm` to see a taken name, then `ada` to see the check.
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/field" />
+
+## Usage
+
+```tsx
+<Field validationMode="onBlur">
+  <FieldLabel required>Email</FieldLabel>
+  <Input type="email" required />
+  <FieldDescription>We never share it.</FieldDescription>
+  <FieldError />
+</Field>
+```
+
+`FieldError` shows the browser's message by default. Pass children for your own message, or use `validate` on `Field` for custom and async checks.
+
+## States
+
+<FieldStates />
+
+## Parts
+
+The same names as the shadcn/ui field: `Field`, `FieldLabel`, `FieldDescription`, `FieldError`, `FieldGroup`, `FieldSet`, `FieldLegend`, and `FieldContent`.
+
+- `Field` takes every Base UI `Field.Root` prop (`validate`, `validationMode`, `invalid`, `disabled`, `name`) and `orientation` (`"vertical"` or `"horizontal"`).
+- `FieldLabel` takes `required`, which adds a visual mark. The control's own `required` is what assistive tech announces.
+
+## Accessibility
+
+- The label, description, and error are linked to the control with `aria-labelledby` and `aria-describedby`.
+- Invalid controls get `aria-invalid`.
+- The required mark is hidden from assistive tech, so it is not read twice.
+- With reduced motion, the error fades instead of growing, and the check fades instead of scaling.
