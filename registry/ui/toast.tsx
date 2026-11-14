@@ -64,12 +64,16 @@ const toast = Object.assign(
       add("warning", title, options),
     loading: (title: ReactNode, options?: ToastOptions) =>
       add("loading", title, options),
-    /** One toast that turns from loading into its result, in place. */
+    /**
+     * One toast that turns from loading into its result, in place.
+     * The error toast is the handling, so a rejection never surfaces as an
+     * unhandled error. Awaiting the returned promise still rejects.
+     */
     promise: <T,>(
       promise: Promise<T>,
       messages: { loading: Message; success: Message; error: Message },
-    ) =>
-      manager.promise(promise, {
+    ) => {
+      const result = manager.promise(promise, {
         loading: {
           ...asOptions(messages.loading),
           type: "loading",
@@ -86,7 +90,10 @@ const toast = Object.assign(
           timeout: 5000,
           priority: "high",
         },
-      }),
+      })
+      result.catch(() => {})
+      return result
+    },
     update: (
       id: string,
       title: ReactNode,

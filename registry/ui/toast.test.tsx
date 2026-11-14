@@ -70,6 +70,37 @@ describe("toast", () => {
     ).toBe("success")
   })
 
+  it("does not leave a failed promise unhandled", async () => {
+    const unhandled = vi.fn()
+    process.on("unhandledRejection", unhandled)
+    render(<Toaster />)
+    await act(async () => {
+      toast.promise(Promise.reject(new Error("Network")), {
+        loading: "Syncing",
+        success: "Synced",
+        error: "Sync failed",
+      })
+    })
+    // Errors also appear in Base UI's live region, so there are two copies.
+    expect((await screen.findAllByText("Sync failed")).length).toBeGreaterThan(
+      0,
+    )
+    await new Promise((resolve) => setTimeout(resolve, 20))
+    process.off("unhandledRejection", unhandled)
+    expect(unhandled).not.toHaveBeenCalled()
+  })
+
+  it("still rejects for code that awaits it", async () => {
+    render(<Toaster />)
+    await expect(
+      toast.promise(Promise.reject(new Error("Network")), {
+        loading: "Uploading",
+        success: "Uploaded",
+        error: "Upload failed",
+      }),
+    ).rejects.toThrow("Network")
+  })
+
   it("closes from the close button", async () => {
     render(<Toaster />)
     await act(async () => {
