@@ -1,32 +1,43 @@
 import type { MDXComponents } from "mdx/types"
 import type { ComponentProps } from "react"
+import { CodeBlock } from "@/components/code-block"
+import { LinkIcon } from "@/components/icons"
+import { InstallCommand } from "@/components/install-command"
 import { cn } from "@/lib/utils"
 
-function Pre({
+function Heading({
+  as: Tag,
+  id,
   className,
-  // Fumadocs passes an icon string for its own UI. We do not render it.
-  icon: _icon,
-  style: _style,
+  children,
   ...props
-}: ComponentProps<"pre"> & { icon?: string }) {
+}: ComponentProps<"h2"> & { as: "h2" | "h3" }) {
   return (
-    <pre
-      className={cn(
-        "overflow-x-auto rounded-xl border border-border bg-card p-4 font-mono text-sm",
-        "[&_code]:bg-transparent [&_code]:p-0 [&_code]:text-sm",
-        className,
-      )}
+    <Tag
+      id={id}
+      className={cn("group/heading scroll-mt-12", className)}
       {...props}
-    />
+    >
+      {children}
+      {id ? (
+        <a
+          href={`#${id}`}
+          aria-label="Link to this section"
+          className="ml-2 inline-flex align-middle text-muted-foreground opacity-0 transition-opacity duration-200 ease-calm hover:text-foreground focus-visible:opacity-100 group-hover/heading:opacity-100"
+        >
+          <LinkIcon className="size-4" />
+        </a>
+      ) : null}
+    </Tag>
   )
 }
 
 export const mdxComponents: MDXComponents = {
   h2: ({ className, ...props }) => (
-    <h2 className={cn("heading-6 pt-6", className)} {...props} />
+    <Heading as="h2" className={cn("heading-6 pt-6", className)} {...props} />
   ),
   h3: ({ className, ...props }) => (
-    <h3 className={cn("title-2 pt-4", className)} {...props} />
+    <Heading as="h3" className={cn("title-2 pt-4", className)} {...props} />
   ),
   p: ({ className, ...props }) => (
     <p className={cn("body-3 text-muted-foreground", className)} {...props} />
@@ -58,5 +69,6 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  pre: Pre,
+  pre: CodeBlock,
+  InstallCommand,
 }

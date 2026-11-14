@@ -40,7 +40,7 @@ function TreeNodes({ nodes }: { nodes: Node[] }) {
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-12 md:flex-row md:gap-12">
+    <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-12 md:flex-row md:gap-12">
       <nav aria-label="Docs" className="body-6 w-full shrink-0 md:w-48">
         <Link href="/" className="title-3 mb-6 block">
           Calmponent
