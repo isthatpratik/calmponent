@@ -70,7 +70,9 @@ function SelectTrigger({
       className={cn(
         "group/select body-6 flex w-full min-w-0 cursor-pointer items-center justify-between gap-2 rounded-lg border border-input bg-transparent px-3 text-foreground outline-none",
         "h-9 data-[size=sm]:h-8",
-        "transition-[border-color,box-shadow,background-color] duration-200 ease-calm",
+        // Release flash: the border brightens while pressed, then fades back slowly.
+        "transition-[border-color,box-shadow,background-color] duration-400 ease-fade",
+        "not-data-[disabled]:active:border-foreground/60 not-data-[disabled]:active:duration-0",
         "hover:bg-accent/50 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30",
         "data-[popup-open]:border-ring",
         "data-[invalid]:border-destructive aria-[invalid=true]:border-destructive",
@@ -129,9 +131,11 @@ function SelectContent({
           data-slot="select-content"
           className={cn(
             "relative max-h-(--available-height) min-w-(--anchor-width) origin-(--transform-origin) overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-lg outline-none",
-            "transition-[opacity,scale] duration-200 ease-calm",
+            "transition-[opacity,scale,translate] duration-200 ease-calm",
             "data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
-            "motion-reduce:data-[ending-style]:scale-100 motion-reduce:data-[starting-style]:scale-100",
+            // Below or above the trigger, the list also drifts the last few pixels toward it.
+            "data-[side=bottom]:data-[starting-style]:-translate-y-1 data-[side=top]:data-[starting-style]:translate-y-1",
+            "motion-reduce:data-[ending-style]:scale-100 motion-reduce:data-[starting-style]:scale-100 motion-reduce:data-[starting-style]:translate-y-0",
             className,
           )}
           {...props}
@@ -179,7 +183,8 @@ function SelectItem({
       data-slot="select-item"
       className={cn(
         "group/item body-5 relative flex w-full cursor-pointer select-none items-center justify-between gap-6 rounded-lg py-1.5 pr-2 pl-2.5 text-muted-foreground outline-none",
-        "transition-colors duration-200 ease-calm",
+        // The highlight arrives at once and leaves softly, so moving fast feels light.
+        "transition-colors duration-150 ease-calm data-[highlighted]:duration-0",
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[selected]:text-foreground",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className,

@@ -43,12 +43,16 @@ const tokens = {
   type: "registry:item",
   title: "Tokens",
   description:
-    "What Calmponent adds to a shadcn theme: success and warning colors, the ease-calm curve, and text styles. Your existing colors stay as they are.",
+    "What Calmponent adds to a shadcn theme: success and warning colors, the motion curves, and text styles. Your existing colors stay as they are.",
   cssVars: {
     theme: {
       "color-success": "var(--success)",
       "color-warning": "var(--warning)",
-      "ease-calm": theme["ease-calm"],
+      ...Object.fromEntries(
+        Object.entries(theme)
+          .filter(([key]) => key.startsWith("ease-"))
+          .map(([key, value]) => [key, value.replace(/\s+/g, " ")]),
+      ),
     },
     light: pick(light, status),
     dark: pick(dark, status),

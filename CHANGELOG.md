@@ -4,7 +4,11 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
-Nothing yet.
+- Motion tokens: `ease-snap`, `ease-pop` (a spring with about 4% overshoot), and `ease-fade`.
+- Release flash on input, textarea, select, checkbox, radio, and switch: the border brightens while pressed and fades back over 400 ms.
+- `switch`: redesigned. Our 8px radius, a 4px thumb radius, a thumb that widens toward the centre when pressed, and a calm breathing pending state instead of a spinner.
+- `checkbox` and `radio-group`: the mark and the dot pop in on a spring.
+- `field`: the valid check pops in. `select`: the list drifts toward its trigger as it opens, and highlights arrive at once and leave softly. `toast`: the icon pops in when loading turns into a result.
 
 ## 0.1.0 (2026-11-14)
 

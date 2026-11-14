@@ -8,7 +8,9 @@ import { cn } from "@/lib/utils"
 
 const inputClasses = [
   "body-6 h-9 w-full min-w-0 rounded-lg border border-input bg-transparent px-3 text-foreground outline-none",
-  "transition-[border-color,box-shadow,background-color] duration-200 ease-calm",
+  // Release flash: the border brightens while pressed, then fades back slowly.
+  "transition-[border-color,box-shadow,background-color] duration-400 ease-fade",
+  "enabled:active:border-foreground/60 enabled:active:duration-0",
   "placeholder:text-muted-foreground",
   "file:mr-3 file:border-0 file:bg-transparent file:font-medium file:text-foreground",
   "focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30",

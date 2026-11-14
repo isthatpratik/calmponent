@@ -29,7 +29,9 @@ function RadioGroupItem({
       data-slot="radio-group-item"
       className={cn(
         "group/radio peer relative inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-transparent outline-none",
-        "transition-[border-color,box-shadow,scale] duration-200 ease-calm",
+        // Release flash on the border.
+        "transition-[border-color,box-shadow,scale] duration-400 ease-fade",
+        "not-data-[disabled]:active:border-foreground/60 not-data-[disabled]:active:duration-0",
         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "active:scale-90 motion-reduce:active:scale-100",
         "data-[checked]:border-primary",
@@ -44,7 +46,8 @@ function RadioGroupItem({
         data-slot="radio-group-indicator"
         className={cn(
           "size-2 rounded-full bg-primary",
-          "scale-0 transition-[scale] duration-300 ease-calm",
+          // The dot pops in on a spring and shrinks out calmly.
+          "scale-0 transition-[scale] duration-300 ease-calm group-data-[checked]/radio:duration-500 group-data-[checked]/radio:ease-pop",
           "group-data-[checked]/radio:scale-100",
           "motion-reduce:transition-none",
         )}

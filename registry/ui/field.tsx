@@ -108,7 +108,7 @@ function FieldLabel({
         strokeLinejoin="round"
         className={cn(
           "size-3.5 text-success",
-          "scale-75 opacity-0 transition-[opacity,scale] duration-300 ease-calm",
+          "scale-75 opacity-0 transition-[opacity,scale] duration-500 ease-pop",
           // Only for a filled value: an empty optional field is valid but needs no check.
           "group-data-[valid]/field:group-data-[filled]/field:scale-100 group-data-[valid]/field:group-data-[filled]/field:opacity-100",
           // Checkboxes, radios, and switches sit in horizontal fields; a check there is noise.
