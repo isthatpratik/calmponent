@@ -1,0 +1,61 @@
+---
+title: Form
+description: A form with submitting, server field errors, a form error, and success built in. The submit button and message follow the form's state.
+---
+
+import { FormDemo } from "@/components/demos/form"
+
+<FormDemo />
+
+Submit it empty: each field shows its own error. Use `ada@example.com`: the server rejects the email, and the error appears on that field. Check "Simulate a server outage": the form shows an alert above the button. Anything else succeeds.
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/form" />
+
+## Usage
+
+```tsx
+<Form
+  onFormSubmit={async (values) => {
+    const response = await createAccount(values)
+    if (response.emailTaken) {
+      return { errors: { email: "That email already has an account." } }
+    }
+    if (!response.ok) return { error: "Something went wrong. Try again." }
+    return { success: "Account created." }
+  }}
+>
+  <Field name="email">
+    <FieldLabel>Email</FieldLabel>
+    <Input type="email" required />
+    <FieldError />
+  </Field>
+  <FormMessage />
+  <FormSubmit statusText={{ loading: "Creating account", success: "Created" }}>
+    Create account
+  </FormSubmit>
+</Form>
+```
+
+## States
+
+| State | What happens |
+|---|---|
+| Field errors | The browser and your `validate` rules run first. Each field shows its error, and `onFormSubmit` is not called. |
+| Submitting | `FormSubmit` shows loading and keeps focus. The form sets `aria-busy`. A second submit is ignored. |
+| Server field errors | Return `{ errors: { name: "message" } }`. Each message appears in that field's `FieldError`. |
+| Form error | Return `{ error: "message" }` or throw. `FormMessage` shows an alert, and the button shows the error state. |
+| Success | Return `{ success: "message" }` or nothing. The button confirms, then returns to idle after `successDuration`. |
+
+## Parts
+
+- `Form`: every Base UI `Form` prop, plus `onFormSubmit(values)` (sync or async) and `successDuration` (default `2000` ms).
+- `FormSubmit`: a `Button` with `type="submit"` whose `status` follows the form. It takes `statusText` and every other button prop.
+- `FormMessage`: the form-level error or success. It grows in and shrinks away.
+
+## Accessibility
+
+- A form error uses `role="alert"`, so it is announced right away. A success uses `role="status"`.
+- Field errors are linked to their controls with `aria-describedby`.
+- The submit button stays focusable while loading, so keyboard users do not lose their place.

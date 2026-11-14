@@ -4,6 +4,8 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- `form`: submitting, server field errors, a form error, and success built in. `FormSubmit` and `FormMessage` follow the form's state.
+- `field`: `FieldError` now shows server errors from `Form`, and the valid check no longer shows on checkbox, radio, and switch fields.
 - `toast`: `toast()`, `toast.success`, `toast.error` with actions, `toast.warning`, and `toast.promise` that turns loading into its result in place. Toasts stack, spread out on hover, and swipe away.
 - `select`: an empty state inside the list, invalid and disabled states, a list that scales in from its trigger, and a chevron that turns as it opens.
 - `checkbox`: the check draws itself, with indeterminate, invalid, and disabled states.

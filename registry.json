@@ -473,6 +473,27 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "A form with submitting, server field errors, a form error, and success built in. The submit button and message follow the form's state.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens",
+        "isthatpratik/calmponent/button",
+        "isthatpratik/calmponent/field"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
