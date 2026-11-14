@@ -1,11 +1,13 @@
 ---
 title: Switch
-description: A switch with a pending state for async saves. On failure, the thumb slides back.
+description: A switch with a pending state for async saves. The thumb widens when pressed and slides back on failure.
 ---
 
 import { SwitchDemo, SwitchStates } from "@/components/demos/choice"
 
 <SwitchDemo />
+
+Press and hold: the thumb widens toward the centre, and the border brightens, then fades when you let go.
 
 ## Install
 
@@ -42,10 +44,10 @@ async function change(next: boolean) {
 
 Every Base UI `Switch.Root` prop, plus:
 
-- `pending`: shows a spinner in the thumb, sets `aria-busy`, and ignores input until the result is known.
+- `pending`: the thumb breathes slowly, `aria-busy` is set, and input is ignored until the result is known.
 
 ## Accessibility
 
 - The switch has `role="switch"` and `aria-checked`.
 - While pending, input is blocked but the switch keeps full contrast, so it does not look disabled.
-- With reduced motion, the thumb moves without sliding.
+- With reduced motion, the thumb moves without sliding, and pending shows as a dimmed thumb instead of a breath.

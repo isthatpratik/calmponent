@@ -7,12 +7,15 @@
       "name": "tokens",
       "type": "registry:item",
       "title": "Tokens",
-      "description": "What Calmponent adds to a shadcn theme: success and warning colors, the ease-calm curve, and text styles. Your existing colors stay as they are.",
+      "description": "What Calmponent adds to a shadcn theme: success and warning colors, the motion curves, and text styles. Your existing colors stay as they are.",
       "cssVars": {
         "theme": {
           "color-success": "var(--success)",
           "color-warning": "var(--warning)",
-          "ease-calm": "cubic-bezier(0.22, 1, 0.36, 1)"
+          "ease-calm": "cubic-bezier(0.22, 1, 0.36, 1)",
+          "ease-snap": "cubic-bezier(0.32, 0.72, 0, 1)",
+          "ease-pop": "linear( 0, 0.052, 0.173, 0.325, 0.482, 0.625, 0.748, 0.846, 0.92, 0.972, 1.006, 1.026, 1.036, 1.038, 1.036, 1.031, 1.026, 1.02, 1.014, 1.009, 1.006, 1.003, 1.001, 1, 1 )",
+          "ease-fade": "cubic-bezier(0.2, 0, 0.6, 1)"
         },
         "light": {
           "success": "#15803d",
@@ -419,14 +422,13 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "description": "A switch with a pending state for async saves. On failure, the thumb slides back.",
+      "description": "A switch with a pending state for async saves. The thumb widens when pressed and slides back on failure.",
       "dependencies": [
         "@base-ui/react"
       ],
       "registryDependencies": [
         "isthatpratik/calmponent/utils",
-        "isthatpratik/calmponent/tokens",
-        "isthatpratik/calmponent/spinner"
+        "isthatpratik/calmponent/tokens"
       ],
       "files": [
         {

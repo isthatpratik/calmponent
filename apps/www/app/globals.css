@@ -141,6 +141,38 @@
 
   /* The one motion curve. Use with duration-200, duration-300, or duration-500. */
   --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Fast and decisive, for a thumb that travels (switch). */
+  --ease-snap: cubic-bezier(0.32, 0.72, 0, 1);
+  /* A spring with about 4% overshoot, for a mark that appears (check, dot). */
+  --ease-pop: linear(
+    0,
+    0.052,
+    0.173,
+    0.325,
+    0.482,
+    0.625,
+    0.748,
+    0.846,
+    0.92,
+    0.972,
+    1.006,
+    1.026,
+    1.036,
+    1.038,
+    1.036,
+    1.031,
+    1.026,
+    1.02,
+    1.014,
+    1.009,
+    1.006,
+    1.003,
+    1.001,
+    1,
+    1
+  );
+  /* A slow fade back after a press: the release flash. */
+  --ease-fade: cubic-bezier(0.2, 0, 0.6, 1);
 }
 
 /* Text styles. Headings use tight tracking; everything else uses 0. */

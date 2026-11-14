@@ -50,6 +50,8 @@ The scale is additive: `sm` = radius − 4px, `md` = radius − 2px, `lg` = radi
 ### Motion
 
 - One curve: `--ease-calm: cubic-bezier(0.22, 1, 0.36, 1)` (utility `ease-calm`). Never the browser defaults `ease`, `linear`, or `ease-in-out`.
+- Added in v0.1.1: `ease-snap` (`cubic-bezier(0.32, 0.72, 0, 1)`) for a thumb that travels, `ease-pop` (a spring as CSS `linear()`, about 4% overshoot) for a mark that appears, and `ease-fade` (`cubic-bezier(0.2, 0, 0.6, 1)`) for the release flash.
+- Release flash: while a control is pressed, its border brightens at once; on release it fades back over 400 ms.
 - Durations: 200 ms for color and opacity, 300 ms for state changes inside a component, 500 ms for layout and position. Use Tailwind's `duration-200`, `duration-300`, and `duration-500`. Tailwind has no theme namespace for durations.
 - Animate only `transform` and `opacity`.
 - With `prefers-reduced-motion`, movement becomes a plain opacity change.

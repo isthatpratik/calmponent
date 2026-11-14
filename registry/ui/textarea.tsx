@@ -7,7 +7,9 @@ import { cn } from "@/lib/utils"
 
 const textareaClasses = [
   "body-6 field-sizing-content min-h-20 w-full min-w-0 resize-y rounded-lg border border-input bg-transparent px-3 py-2 text-foreground outline-none",
-  "transition-[border-color,box-shadow,background-color] duration-200 ease-calm",
+  // Release flash: the border brightens while pressed, then fades back slowly.
+  "transition-[border-color,box-shadow,background-color] duration-400 ease-fade",
+  "enabled:active:border-foreground/60 enabled:active:duration-0",
   // Grows with its content where supported; elsewhere the user can resize it.
   "supports-[field-sizing:content]:resize-none",
   "placeholder:text-muted-foreground",

@@ -19,7 +19,10 @@ function Checkbox({
       data-slot="checkbox"
       className={cn(
         "group/checkbox peer relative inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-sm border border-input bg-transparent text-primary-foreground outline-none",
-        "transition-[background-color,border-color,box-shadow,scale] duration-200 ease-calm",
+        // Release flash on the border; the fill follows the state quickly.
+        "transition-[background-color,border-color,box-shadow,scale] duration-400 ease-fade",
+        "not-data-[disabled]:active:border-foreground/60 not-data-[disabled]:active:duration-0",
+        "data-[checked]:duration-200 data-[indeterminate]:duration-200",
         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "active:scale-90 motion-reduce:active:scale-100",
         "data-[checked]:border-primary data-[checked]:bg-primary data-[indeterminate]:border-primary data-[indeterminate]:bg-primary",
@@ -42,7 +45,13 @@ function Checkbox({
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-3.5"
+          className={cn(
+            "size-3.5",
+            // The mark pops in on a spring while the check draws itself.
+            "scale-75 transition-[scale] duration-500 ease-pop",
+            "group-data-[checked]/checkbox:scale-100 group-data-[indeterminate]/checkbox:scale-100",
+            "motion-reduce:scale-100 motion-reduce:transition-none",
+          )}
         >
           <path
             d="M5 12.5l4.5 4.5L19 7.5"

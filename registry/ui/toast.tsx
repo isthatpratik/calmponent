@@ -168,7 +168,11 @@ function ToastList() {
       )}
     >
       <ToastPrimitive.Content className="flex items-start gap-3 overflow-hidden p-4 transition-opacity duration-300 ease-calm data-[behind]:opacity-0 data-[expanded]:opacity-100">
-        <span className="mt-0.5 flex shrink-0 empty:hidden">
+        {/* A new key per type: when loading turns into its result, the icon pops in. */}
+        <span
+          key={item.type}
+          className="mt-0.5 flex shrink-0 transition-[scale,opacity] duration-500 ease-pop empty:hidden starting:scale-50 starting:opacity-0 motion-reduce:starting:scale-100"
+        >
           <Icon type={item.type} />
         </span>
         <div className="flex min-w-0 flex-1 flex-col gap-1">
