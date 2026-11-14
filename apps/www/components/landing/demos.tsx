@@ -64,7 +64,8 @@ export function SwitchDemo() {
     report("loading")
     await wait(1100)
     setPending(false)
-    if (attempt.current % 2 === 1) {
+    // Only the very first change fails, to show the failed state once.
+    if (attempt.current === 1) {
       setOn(!next)
       setFailed(true)
       report("error")
