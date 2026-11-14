@@ -4,6 +4,7 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- Brand: the mark on a 24-unit grid, an SVG favicon that follows the browser theme, an Apple touch icon, downloadable mark files, a Brand docs page, and `DESIGN.md` with the design system in one place.
 - SEO and AEO: Calmponent is now described as an open-source React UI library for shadcn/ui and Tailwind CSS. Page titles, descriptions, canonical URLs, Open Graph and Twitter cards, generated OG images for the home page and every docs page, `sitemap.xml`, `robots.txt`, structured data (WebSite, SoftwareSourceCode, FAQPage, TechArticle, BreadcrumbList), and a landing FAQ.
 - Docs: "On this page" and section anchors no longer hide under the header.
 - Docs for AI tools: `/llms.txt`, `/llms-full.txt`, and every page as Markdown at `/docs/<page>.md`, also linked from the page menu.

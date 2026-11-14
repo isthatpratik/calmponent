@@ -1,0 +1,37 @@
+---
+title: Brand
+description: The Calmponent name, mark, colors, type, and voice, and how to use them.
+---
+
+import { BrandMarks } from "@/components/demos/brand"
+
+## Name
+
+Write **Calmponent** as one word with a capital C. It joins "calm" and "component": quiet, intentional motion and a calm, finished look. Describe it as "an open-source React UI library for shadcn/ui and Tailwind CSS".
+
+## Mark
+
+The mark is a rounded square with a dot in the middle: a component and its status light. It sits on a 24-unit grid. The square is 18 units wide with a 5-unit radius and a 2-unit stroke, and the dot has a 2.5-unit radius.
+
+<BrandMarks />
+
+- Use the mark in one color only: the current text color, black, or white.
+- Keep clear space of one dot diameter on every side.
+- Do not add color, gradients, shadows, or outlines. Do not stretch or rotate it.
+- At 16px and below, use the mark alone without the wordmark.
+
+## Color
+
+Calmponent is monochrome: black, white, and pure neutral grays. Color appears only for status: green for success, amber for warning, and red for errors. Every text color passes WCAG AA (4.5:1), and input borders and focus rings pass 3:1, checked in CI. See the [design system](/docs/design-system).
+
+## Type
+
+Geist for text and Geist Mono for code. Headings are semibold with slightly tight tracking (`-0.025em`); body text uses normal tracking.
+
+## Motion
+
+Every motion has a cause: something changed, so something moves, then it rests. One curve family (`ease-calm`, `ease-snap`, `ease-pop`, `ease-fade`) and reduced motion everywhere.
+
+## Voice
+
+Plain and specific. Short sentences, active voice, one idea at a time. Say what a component does, not how exciting it is. Errors say what failed and what to do next.
