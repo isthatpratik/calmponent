@@ -4,6 +4,7 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- `timeline`: done, running, pending, failed, and skipped states. Connectors draw down as steps finish, new icons pop in, and loading and empty states are built in.
 - Motion tokens: `ease-snap`, `ease-pop` (a spring with about 4% overshoot), and `ease-fade`.
 - Release flash on input, textarea, select, checkbox, radio, and switch: the border brightens while pressed and fades back over 400 ms.
 - `switch`: redesigned. Our 8px radius, a 4px thumb radius, a thumb that widens toward the centre when pressed, and a calm breathing pending state instead of a spinner.
