@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Scan the registry for class names. */
+@source "../../../registry";
+
 /*
  * Calmponent design tokens. See docs/decisions/0009-design-system.md.
  * Token names follow shadcn/ui, so an existing shadcn theme keeps working.
@@ -305,6 +308,15 @@
   body {
     @apply bg-background font-sans text-foreground antialiased;
   }
+}
+
+/*
+ * Code blocks stay monochrome: color is for status only (ADR 0009).
+ * Shiki sets per-token colors inline; we drop them.
+ */
+.shiki span {
+  /* biome-ignore lint/complexity/noImportantStyles: Shiki sets token colors inline */
+  color: inherit !important;
 }
 
 /* Reduced motion: movement becomes a plain opacity change. */

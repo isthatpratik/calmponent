@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/*.md", "!apps/www/public/r"]
+    "includes": ["**", "!**/*.md", "!apps/www/public/r", "!registry.json"]
   },
   "formatter": {
     "enabled": true,

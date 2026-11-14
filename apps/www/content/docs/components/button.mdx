@@ -1,0 +1,48 @@
+---
+title: Button
+description: A button that shows what its action did. Loading, success, and error are built in.
+---
+
+import { ButtonDemo, ButtonStates } from "@/components/demos/button"
+
+<ButtonDemo />
+
+Click a button. The label moves to the next state instead of swapping, and the width stays the same. "Publish" fails on purpose, so you can see the error state.
+
+## Install
+
+```bash
+npx shadcn@latest add isthatpratik/calmponent/button
+```
+
+## Usage
+
+Set `status` from your own request state. Leave it unset for a plain button.
+
+```tsx
+<Button
+  status={status}
+  statusText={{ loading: "Saving", success: "Saved", error: "Try again" }}
+  onClick={save}
+>
+  Save changes
+</Button>
+```
+
+## States
+
+<ButtonStates />
+
+## Props
+
+The same props as the shadcn/ui button (`variant`, `size`, `render`, and every Base UI button prop), plus:
+
+- `status`: `"idle" | "loading" | "success" | "error"`. Unset means a plain button.
+- `statusText`: text for each status. Each one defaults to the button's own label.
+
+## Accessibility
+
+- While loading, the button stays focusable and sets `aria-busy`. This follows Base UI's guidance.
+- The accessible name is the visible label of the current state.
+- A hidden live region announces "Loading", "Done", or "Failed".
+- With reduced motion, the label fades instead of moving, and the spinner stops.

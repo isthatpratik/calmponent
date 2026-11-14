@@ -4,15 +4,301 @@
   "homepage": "https://github.com/isthatpratik/calmponent",
   "items": [
     {
+      "name": "tokens",
+      "type": "registry:item",
+      "title": "Tokens",
+      "description": "What Calmponent adds to a shadcn theme: success and warning colors, the ease-calm curve, and text styles. Your existing colors stay as they are.",
+      "cssVars": {
+        "theme": {
+          "color-success": "var(--success)",
+          "color-warning": "var(--warning)",
+          "ease-calm": "cubic-bezier(0.22, 1, 0.36, 1)"
+        },
+        "light": {
+          "success": "#15803d",
+          "warning": "#b45309"
+        },
+        "dark": {
+          "success": "#4ade80",
+          "warning": "#fbbf24"
+        }
+      },
+      "css": {
+        "@utility heading-1": {
+          "font-size": "var(--text-6xl)",
+          "line-height": "var(--text-6xl--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "var(--tracking-tight)"
+        },
+        "@utility heading-2": {
+          "font-size": "var(--text-5xl)",
+          "line-height": "var(--text-5xl--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "var(--tracking-tight)"
+        },
+        "@utility heading-3": {
+          "font-size": "var(--text-4xl)",
+          "line-height": "var(--text-4xl--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "var(--tracking-tight)"
+        },
+        "@utility heading-4": {
+          "font-size": "var(--text-3xl)",
+          "line-height": "var(--text-3xl--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "var(--tracking-tight)"
+        },
+        "@utility heading-5": {
+          "font-size": "var(--text-2xl)",
+          "line-height": "var(--text-2xl--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "var(--tracking-tight)"
+        },
+        "@utility heading-6": {
+          "font-size": "var(--text-xl)",
+          "line-height": "var(--text-xl--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "var(--tracking-tight)"
+        },
+        "@utility title-1": {
+          "font-size": "var(--text-xl)",
+          "line-height": "var(--text-xl--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility title-2": {
+          "font-size": "var(--text-lg)",
+          "line-height": "var(--text-lg--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility title-3": {
+          "font-size": "var(--text-base)",
+          "line-height": "var(--text-base--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility title-4": {
+          "font-size": "var(--text-sm)",
+          "line-height": "var(--text-sm--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility title-5": {
+          "font-size": "var(--text-xs)",
+          "line-height": "var(--text-xs--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility body-1": {
+          "font-size": "var(--text-base)",
+          "line-height": "var(--text-base--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "0"
+        },
+        "@utility body-2": {
+          "font-size": "var(--text-base)",
+          "line-height": "var(--text-base--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility body-3": {
+          "font-size": "var(--text-base)",
+          "line-height": "var(--text-base--line-height)",
+          "font-weight": "var(--font-weight-normal)",
+          "letter-spacing": "0"
+        },
+        "@utility body-4": {
+          "font-size": "var(--text-sm)",
+          "line-height": "var(--text-sm--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "0"
+        },
+        "@utility body-5": {
+          "font-size": "var(--text-sm)",
+          "line-height": "var(--text-sm--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility body-6": {
+          "font-size": "var(--text-sm)",
+          "line-height": "var(--text-sm--line-height)",
+          "font-weight": "var(--font-weight-normal)",
+          "letter-spacing": "0"
+        },
+        "@utility button-lg": {
+          "font-size": "var(--text-lg)",
+          "line-height": "var(--text-lg--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "0"
+        },
+        "@utility button-md": {
+          "font-size": "var(--text-base)",
+          "line-height": "var(--text-base--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "0"
+        },
+        "@utility button-sm": {
+          "font-size": "var(--text-sm)",
+          "line-height": "var(--text-sm--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "0"
+        },
+        "@utility button-xsm": {
+          "font-size": "var(--text-xs)",
+          "line-height": "var(--text-xs--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "0"
+        },
+        "@utility caption-1": {
+          "font-size": "var(--text-sm)",
+          "line-height": "var(--text-sm--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility caption-2": {
+          "font-size": "var(--text-sm)",
+          "line-height": "var(--text-sm--line-height)",
+          "font-weight": "var(--font-weight-normal)",
+          "letter-spacing": "0"
+        },
+        "@utility caption-3": {
+          "font-size": "var(--text-xs)",
+          "line-height": "var(--text-xs--line-height)",
+          "font-weight": "var(--font-weight-semibold)",
+          "letter-spacing": "0"
+        },
+        "@utility caption-4": {
+          "font-size": "var(--text-xs)",
+          "line-height": "var(--text-xs--line-height)",
+          "font-weight": "var(--font-weight-medium)",
+          "letter-spacing": "0"
+        },
+        "@utility caption-5": {
+          "font-size": "var(--text-xs)",
+          "line-height": "var(--text-xs--line-height)",
+          "font-weight": "var(--font-weight-normal)",
+          "letter-spacing": "0"
+        }
+      }
+    },
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Theme",
+      "description": "The Calmponent look: full monochrome, pure neutral grays, color only for status, and an 8px radius. Replaces your theme colors.",
+      "registryDependencies": [
+        "isthatpratik/calmponent/tokens"
+      ],
+      "cssVars": {
+        "theme": {
+          "radius": "0.5rem"
+        },
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#0a0a0a",
+          "card": "#ffffff",
+          "card-foreground": "#0a0a0a",
+          "popover": "#ffffff",
+          "popover-foreground": "#0a0a0a",
+          "primary": "#0a0a0a",
+          "primary-foreground": "#fafafa",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#0a0a0a",
+          "muted": "#f5f5f5",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#0a0a0a",
+          "border": "#e5e5e5",
+          "input": "#858585",
+          "ring": "#737373",
+          "destructive": "#b91c1c",
+          "success": "#15803d",
+          "warning": "#b45309",
+          "chart-1": "#0a0a0a",
+          "chart-2": "#404040",
+          "chart-3": "#737373",
+          "chart-4": "#a3a3a3",
+          "chart-5": "#d4d4d4",
+          "sidebar": "#fafafa",
+          "sidebar-foreground": "#0a0a0a",
+          "sidebar-primary": "#0a0a0a",
+          "sidebar-primary-foreground": "#fafafa",
+          "sidebar-accent": "#f5f5f5",
+          "sidebar-accent-foreground": "#0a0a0a",
+          "sidebar-border": "#e5e5e5",
+          "sidebar-ring": "#737373"
+        },
+        "dark": {
+          "background": "#000000",
+          "foreground": "#fafafa",
+          "card": "#181818",
+          "card-foreground": "#fafafa",
+          "popover": "#1f1f1f",
+          "popover-foreground": "#fafafa",
+          "primary": "#fafafa",
+          "primary-foreground": "#0a0a0a",
+          "secondary": "#272727",
+          "secondary-foreground": "#fafafa",
+          "muted": "#1f1f1f",
+          "muted-foreground": "#a3a3a3",
+          "accent": "#272727",
+          "accent-foreground": "#fafafa",
+          "border": "#272727",
+          "input": "#6b6b6b",
+          "ring": "#737373",
+          "destructive": "#f87171",
+          "success": "#4ade80",
+          "warning": "#fbbf24",
+          "chart-1": "#fafafa",
+          "chart-2": "#d4d4d4",
+          "chart-3": "#a3a3a3",
+          "chart-4": "#737373",
+          "chart-5": "#525252",
+          "sidebar": "#000000",
+          "sidebar-foreground": "#fafafa",
+          "sidebar-primary": "#fafafa",
+          "sidebar-primary-foreground": "#0a0a0a",
+          "sidebar-accent": "#1f1f1f",
+          "sidebar-accent-foreground": "#fafafa",
+          "sidebar-border": "#272727",
+          "sidebar-ring": "#737373"
+        }
+      }
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "title": "Utils",
       "description": "The cn() helper. Joins class names and resolves Tailwind CSS conflicts.",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/lib/utils.ts",
           "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A button with loading, success, and error states. The label moves between states and the width never jumps.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "isthatpratik/calmponent/utils",
+        "isthatpratik/calmponent/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:ui"
         }
       ]
     }
