@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <title>Calmponent</title>
+  <rect width="24" height="24" fill="#000000"/>
+  <rect x="3" y="3" width="18" height="18" rx="5" stroke="#fafafa" stroke-width="2"/>
+  <circle cx="12" cy="12" r="2.5" fill="#fafafa"/>
+</svg>
