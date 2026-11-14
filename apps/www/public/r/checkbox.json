@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "title": "Checkbox",
+  "description": "A checkbox whose check draws itself, with indeterminate, invalid, and disabled states.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "isthatpratik/calmponent/utils",
+    "isthatpratik/calmponent/tokens"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/checkbox.tsx",
+      "content": "\"use client\"\n\nimport { Checkbox as CheckboxPrimitive } from \"@base-ui/react/checkbox\"\nimport type { ComponentProps } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * The check draws itself when checked and erases when unchecked. The\n * indeterminate dash grows from the center. Both stay mounted, so they\n * animate both ways.\n */\nfunction Checkbox({\n  className,\n  ...props\n}: ComponentProps<typeof CheckboxPrimitive.Root>) {\n  return (\n    <CheckboxPrimitive.Root\n      data-slot=\"checkbox\"\n      className={cn(\n        \"group/checkbox peer relative inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-sm border border-input bg-transparent text-primary-foreground outline-none\",\n        \"transition-[background-color,border-color,box-shadow,scale] duration-200 ease-calm\",\n        \"focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n        \"active:scale-90 motion-reduce:active:scale-100\",\n        \"data-[checked]:border-primary data-[checked]:bg-primary data-[indeterminate]:border-primary data-[indeterminate]:bg-primary\",\n        \"data-[invalid]:border-destructive aria-[invalid=true]:border-destructive\",\n        \"data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\",\n        className,\n      )}\n      {...props}\n    >\n      <CheckboxPrimitive.Indicator\n        keepMounted\n        data-slot=\"checkbox-indicator\"\n        className=\"flex items-center justify-center\"\n      >\n        <svg\n          aria-hidden=\"true\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          stroke=\"currentColor\"\n          strokeWidth=\"3\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          className=\"size-3.5\"\n        >\n          <path\n            d=\"M5 12.5l4.5 4.5L19 7.5\"\n            pathLength={1}\n            className={cn(\n              \"[stroke-dasharray:1] [stroke-dashoffset:1]\",\n              \"transition-[stroke-dashoffset] duration-300 ease-calm\",\n              \"group-data-[checked]/checkbox:[stroke-dashoffset:0]\",\n              \"motion-reduce:transition-none\",\n            )}\n          />\n          <path\n            d=\"M6 12h12\"\n            className={cn(\n              \"origin-center scale-x-0\",\n              \"transition-[scale] duration-300 ease-calm\",\n              \"group-data-[indeterminate]/checkbox:scale-x-100\",\n              \"motion-reduce:transition-none\",\n            )}\n          />\n        </svg>\n      </CheckboxPrimitive.Indicator>\n    </CheckboxPrimitive.Root>\n  )\n}\n\nexport { Checkbox }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

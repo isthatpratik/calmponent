@@ -1,0 +1,51 @@
+---
+title: Switch
+description: A switch with a pending state for async saves. On failure, the thumb slides back.
+---
+
+import { SwitchDemo, SwitchStates } from "@/components/demos/choice"
+
+<SwitchDemo />
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/switch" />
+
+## Usage
+
+Move the switch right away, set `pending` while you save, and set `checked` back if saving fails.
+
+```tsx
+async function change(next: boolean) {
+  setOn(next)
+  setPending(true)
+  const ok = await save(next)
+  setPending(false)
+  if (!ok) {
+    setOn(!next)
+    setError(true)
+  }
+}
+
+<Field orientation="horizontal" invalid={error}>
+  <Switch checked={on} pending={pending} onCheckedChange={change} />
+  <FieldLabel>Weekly summary email</FieldLabel>
+  <FieldError match={error}>Could not save. Try again.</FieldError>
+</Field>
+```
+
+## States
+
+<SwitchStates />
+
+## Props
+
+Every Base UI `Switch.Root` prop, plus:
+
+- `pending`: shows a spinner in the thumb, sets `aria-busy`, and ignores input until the result is known.
+
+## Accessibility
+
+- The switch has `role="switch"` and `aria-checked`.
+- While pending, input is blocked but the switch keeps full contrast, so it does not look disabled.
+- With reduced motion, the thumb moves without sliding.

@@ -4,6 +4,9 @@ All notable changes to Calmponent are listed here. Versions follow [semver](http
 
 ## Unreleased
 
+- `checkbox`: the check draws itself, with indeterminate, invalid, and disabled states.
+- `radio-group`: the dot grows in and the previous one shrinks out.
+- `switch`: a pending state for async saves. On failure, the thumb slides back and a message explains why.
 - `textarea`: grows with its content, a character count that turns amber near the limit and red at it, and calm announcements at 50, 20, and 10 characters left.
 - `field`: label, description, and error. Errors grow in and out without layout jumps, a check appears for valid filled values, and async validation is supported.
 - `input`: invalid, read only, disabled, and a checking state with an inline spinner.

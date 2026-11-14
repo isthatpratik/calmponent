@@ -1,0 +1,37 @@
+---
+title: Radio Group
+description: Radio buttons whose dot grows in when selected, with invalid and disabled states.
+---
+
+import { RadioDemo, RadioStates } from "@/components/demos/choice"
+
+<RadioDemo />
+
+## Install
+
+<InstallCommand item="isthatpratik/calmponent/radio-group" />
+
+## Usage
+
+```tsx
+<RadioGroup defaultValue="team">
+  <Field orientation="horizontal">
+    <RadioGroupItem value="team" />
+    <FieldLabel>Team</FieldLabel>
+  </Field>
+</RadioGroup>
+```
+
+## States
+
+<RadioStates />
+
+## Parts
+
+- `RadioGroup`: every Base UI `RadioGroup` prop (`value`, `defaultValue`, `onValueChange`, `disabled`, `name`).
+- `RadioGroupItem`: every Base UI `Radio.Root` prop (`value`, `disabled`).
+
+## Accessibility
+
+- Arrow keys move between items, and Tab leaves the group, as in native radio buttons.
+- With reduced motion, the dot appears without growing.
