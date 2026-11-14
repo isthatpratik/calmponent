@@ -23,7 +23,7 @@ Rules:
 | D9 | Quality gates | Accessibility tests, visual regression, bundle size limits, reduced motion checks, browser matrix, CI. | All four gates in CI before v1. | open |
 | D10 | AI readiness | `llms.txt`, Claude Code skill, prop JSON schemas, shadcn MCP support, published agent test results. | All of them, with a test that measures agent output. | open |
 | D11 | Repo and workflow rules | Monorepo layout, package manager, commit style, branches, approvals. | Accepted. See [0007](0007-repo-tooling.md). | accepted |
-| D12 | v1 scope | Which 20 to 25 components and which blocks ship first? | Draft after D2 and D6. | open |
+| D12 | v1 scope | Which 20 to 25 components and which blocks ship first? | Proposed in [0010](0010-v1-scope.md). | proposed |
 | D13 | Code reuse | What do we copy from shadcn/ui or other projects? What notice must we keep? | Accepted: write from scratch, reference only. See [0003](0003-code-reuse.md). | accepted |
 | D14 | Hosting and domain | Where does the site run? Which domain? | Free Vercel subdomain first. A domain costs money, so the user decides. | open |
 
